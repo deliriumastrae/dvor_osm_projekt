@@ -3,5 +3,5 @@ from menu import menu
 
 menu(authenticated=True)
 
-st.title("About us")
+st.title("EasyPressure")
 st.markdown(f"You can read about our app here .")

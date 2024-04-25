@@ -2,10 +2,12 @@ import streamlit as st
 
 def authenticated_menu():
     st.sidebar.title("Menu")
-    st.sidebar.page_link("pages/user.py", label="Your profile")
-    st.sidebar.page_link("pages/about.py", label="About us")
-    st.sidebar.button("Logout")
-
+    st.sidebar.page_link("pages/data_entry.py", label="Werte eingeben")
+    st.sidebar.page_link("pages/create_diagram.py", label="Diagramm")
+    if st.sidebar.button('Abmelden'):
+        st.session_state.authenticated = False
+        print(st.session_state.authenticated)
+        st.switch_page('app.py')
 
 def unauthenticated_menu():
     st.sidebar.title("Menu")

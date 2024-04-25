@@ -3,12 +3,11 @@ from menu import menu
 import pandas as pd
 import os
 import bcrypt
-from logout import logout
 
 LOGIN_FILE = 'user_data.csv'
 
 def main():
-    st.title("Welcome to Your Website")
+    st.title("EasyPressure")
 
     if "authenticated" not in st.session_state:
         st.session_state.authenticated = False
@@ -17,16 +16,15 @@ def main():
         with open(LOGIN_FILE, 'w') as f:
             f.write("username,password_hash\n")
 
-    choice = st.radio("Choose an Option:", ["Login", "Register"])
-
-    if choice == "Login":
+    choice = st.radio("Wählen Sie eine Option:", ["Anmelden", "Registeren"])
+        
+    if choice == "Anmelden":
         login()
-    elif choice == "Register":
+    elif choice == "Registeren":
         register()
 
     menu(st.session_state.authenticated)
-
-    
+   
 
 def register():
     st.subheader("Register")
@@ -35,7 +33,7 @@ def register():
     confirm_password = st.text_input("Confirm Password", type="password", key="register_confirm_password")
     
     if password != confirm_password:
-        st.error("Passwords do not match.")
+        st.error("Passwords don't match.")
         return
     
     if st.button("Register"):
@@ -54,10 +52,12 @@ def login():
     if st.button("Login"):
         if authenticate(username, password):
             st.session_state.authenticated = True
-            st.switch_page("pages/user.py")
+            print(st.session_state.authenticated)
+            st.switch_page("pages/data_entry.py")
         else:
             st.error("Invalid username or password")
             st.session_state.authenticated = False
+
 
 def authenticate(username, password):
     login_df = pd.read_csv(LOGIN_FILE, header=None, names=['username', 'password_hash'])
@@ -66,6 +66,8 @@ def authenticate(username, password):
         return True
     else:
         return False
+
+
 
 if __name__ == "__main__":
     main()
