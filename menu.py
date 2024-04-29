@@ -2,6 +2,7 @@ import streamlit as st
 
 def authenticated_menu():
     st.sidebar.title("Menu")
+    st.sidebar.page_link("pages/profile.py", label="Profil")
     st.sidebar.page_link("pages/data_entry.py", label="Werte eingeben")
     st.sidebar.page_link("pages/create_diagram.py", label="Diagramm")
     st.sidebar.page_link("pages/send_the_data.py", label="Daten versenden")
