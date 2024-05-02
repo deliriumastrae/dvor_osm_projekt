@@ -1,6 +1,5 @@
 streamlit 
 bcrypt
-import 
 streamlit_cookies_controller
 base64
 jwt
