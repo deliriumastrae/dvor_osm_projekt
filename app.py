@@ -3,12 +3,13 @@ import pandas as pd
 import bcrypt
 import io
 from streamlit_cookies_controller import CookieController
-from github import Github, GithubException
 import base64
 import jwt
 import os
+from github import Github, GithubException
 from os.path import join, dirname
 from dotenv import load_dotenv
+from utility.auth_utilities import get_user_data
 
 dotenv_path=join(dirname(__file__), ".env")
 load_dotenv(dotenv_path)
@@ -95,8 +96,9 @@ def login():
     if st.button("Anmelden"):
         if authenticate(username, password):
             st.session_state.authenticated = True
-            user_data = get_user_data(username)
-            token = generateAuthToken(user_data)
+            user_data = get_user_data(username, REPO_NAME, LOGIN_FILE, LOGIN_COLUMNS)
+            username = user_data['username'].item()
+            token = generateAuthToken(username)
             if token:
                 st.session_state.token = token
                 controller.set("auth_token", token)
@@ -106,26 +108,10 @@ def login():
             st.session_state.authenticated = False
 
 
-def get_user_data(username):
-    try:
-        g = Github(GITHUB_TOKEN)
-        repo = g.get_user().get_repo(REPO_NAME)
-        contents = repo.get_contents(LOGIN_FILE)
-        existing_data = pd.read_csv(io.StringIO(base64.b64decode(contents.content).decode('utf-8')), names=LOGIN_COLUMNS)
-        user_data = existing_data[existing_data['username'] == username]
-        if not user_data.empty:
-            return user_data.iloc[0].to_dict()
-        else:
-            return None
-    except GithubException as e:
-        st.error(f"Fehler beim Abrufen der Benutzerdaten: {e}")
-        return None
-
-  
-def generateAuthToken(user):
-    if user:
+def generateAuthToken(username):
+    if username:
         payload = {
-            "user_name": user['username']
+            "user_name": username
         }
         token = jwt.encode(payload, JWT_KEY, algorithm='HS256')
         return token 
