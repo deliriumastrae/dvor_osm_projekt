@@ -30,7 +30,7 @@ def profile_page():
         decoded_token = jwt.decode(token, JWT_KEY, algorithms=['HS256'])
         username = decoded_token.get('user_name')
         user_data =  get_user_data(username,REPO_NAME, LOGIN_FILE, LOGIN_COLUMNS)
-        user_data=user_data.iloc[0].to_dict()
+        user_data= user_data.iloc[0].to_dict()
         st.write("Benutzername: " + user_data['username'])
         st.write("Vorname: " + user_data['first_name'])
         st.write("Nachname: " + user_data['last_name'])
