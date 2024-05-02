@@ -10,4 +10,4 @@ os.path
 pandas
 plotly.graph_objs
 datetime
-time
+timegit 
