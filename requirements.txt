@@ -1,12 +1,9 @@
 streamlit 
 bcrypt
 streamlit_cookies_controller
-base64
 jwt
 os
 github
-os.path
 pandas
-plotly.graph_objs
 datetime
 timegit 
