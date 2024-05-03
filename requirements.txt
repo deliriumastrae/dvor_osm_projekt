@@ -1,7 +1,7 @@
 streamlit 
 bcrypt
 streamlit_cookies_controller
+github
 jwt
 pandas
 datetime
-github
