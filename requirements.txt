@@ -4,3 +4,4 @@ streamlit_cookies_controller
 jwt
 pandas
 datetime
+github
