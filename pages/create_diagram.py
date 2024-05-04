@@ -23,7 +23,6 @@ def get_auth_token():
     return token
 
 username = decode_auth_token(get_auth_token())
-st.title("EasyPressure")
 st.write("Benutzername:", username)
 
 user_data = get_user_data(username, REPO_NAME, VALUE_FILE, VALUE_COLUMNS)
@@ -45,14 +44,19 @@ if user_data is not None:
 
 
     if period == "Tag":
-        end_date = datetime.now()
-        start_date = end_date - timedelta(days=1)
+        end_date = datetime.now().replace(hour=23, minute=59, second=59, microsecond=999999)
+        start_date = datetime.now().replace(hour=0, minute=0, second=0, microsecond=0) - timedelta(days=1)
     elif period == "Woche":
-        end_date = datetime.now()
-        start_date = end_date - timedelta(weeks=1)
+        end_date = datetime.now().replace(hour=23, minute=59, second=59, microsecond=999999)
+        if end_date.weekday() != 6: 
+            start_date = end_date - timedelta(days=end_date.weekday() + 1)
+        else:
+            start_date = end_date - timedelta(days=6) 
     elif period == "Monat":
-        end_date = datetime.now()
-        start_date = end_date - timedelta(days=30)
+        end_date = datetime.now().replace(hour=23, minute=59, second=59, microsecond=999999)
+        start_date = datetime(end_date.year, end_date.month, 1)
+
+
     else:
         start_date = st.date_input("Wähle das Startdatum", value=(datetime.now() - timedelta(days=7)))
         end_date = st.date_input("Wähle das Enddatum", value=datetime.now())
@@ -64,7 +68,7 @@ if user_data is not None:
 
     if not filtered_data.empty:
         filtered_data['Datum'] = pd.to_datetime(filtered_data['Datum'], format='%d.%m.%Y | %H:%M')
-        filtered_data = filtered_data.sort_values(by='Datum', ascending=True)
+        filtered_data = filtered_data.sort_values(by='Datum', ascending=False)
 
         fig = go.Figure()
 
@@ -94,8 +98,8 @@ if user_data is not None:
             plot_bgcolor='white', 
             paper_bgcolor='white',  
             hoverlabel=dict(font=dict(size=16)), 
-            width=900, 
-            height=550
+            width=1000, 
+            height=700
         )
 
         st.plotly_chart(fig)

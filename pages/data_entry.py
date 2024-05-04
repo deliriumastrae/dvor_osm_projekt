@@ -47,14 +47,11 @@ def add_data_to_github(username, syst_pressure, diast_pressure, pulse, comment, 
     except Exception as e:
         st.error(f"Fehler beim Hinzufügen von Daten zu GitHub: {e}")
         return False
-    
-st.title("EasyPressure")
 username= decode_auth_token(get_auth_token())
 st.write("Benutzername:", username)
 
 st.markdown("<h2 style='color: black; font-weight: bold; font-size: 18px; margin-bottom: -80px;'>Bitte wählen Sie den Eingabetyp:</h2>", unsafe_allow_html=True)
 option = st.radio("", ("Schieberegler", "Zahleneingabe"))
-
 
 st.markdown("<div style='text-align: center;'><h3 style='color: black;margin-bottom: -50px;'>Systolischer Druck</h3></div>", unsafe_allow_html=True)
 if option == "Schieberegler":
@@ -93,8 +90,7 @@ user_time_rounded = user_time.replace(second=0, microsecond=0)
 
 date_time = datetime.combine(user_date, user_time_rounded)
 
-
-if st.button("Daten speichern"):
+if st.button("Daten speichern", type="primary",help="Hier klicken, um die Daten zu speichern"):
     if add_data_to_github(username, syst_pressure, diast_pressure, pulse, comment, date_time):
         with st.empty():
             st.success("Daten erfolgreich gespeichert!")

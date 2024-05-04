@@ -35,7 +35,7 @@ if user_data is not None:
 
     user_data_display['Datum'] = pd.to_datetime(user_data_display['Datum'])
 
-    user_data_display = user_data_display.sort_values(by='Datum', ascending=True)
+    user_data_display = user_data_display.sort_values(by='Datum', ascending=False)
     
     user_data_display = user_data_display.fillna("")
     
