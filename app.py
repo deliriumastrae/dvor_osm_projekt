@@ -6,7 +6,8 @@ from streamlit_cookies_controller import CookieController
 import base64
 import jwt
 import os
-from github import Github, GithubException
+from github import Github
+from github import GithubException
 from os.path import join, dirname
 from dotenv import load_dotenv
 from utility.auth_utilities import get_user_data
