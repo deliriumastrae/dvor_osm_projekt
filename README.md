@@ -2,7 +2,7 @@
 
 # EasyPressure
 
-## Version 1.0 - Grundlegende Funktionalität (Q2 2024)
+## Version 1.0 - Grundlegende Funktionalität
 
 ### Funktionen:
 - **Eingabe von Blutdruck- und Pulswerten**
@@ -15,13 +15,13 @@
   - Integration von interaktiven Elementen wie Slider, Dropdown-Menüs und Schaltflächen für eine verbesserte Benutzererfahrung.
 
 ### Meilensteine:
-- Design und Entwicklung der Benutzeroberfläche (Woche 1-2)
-- Implementierung der Datenbankstruktur für die Speicherung von Blutdruck- und Pulswerten (Woche 3-4)
-- Entwicklung der Funktionen für die Eingabe und Verfolgung von Blutdruck- und Pulswerten (Woche 5-6)
-- Integration von Datenvisualisierungen zur besseren Interpretation der Daten (Woche 7-8)
-- Testphase und Fehlerbehebung (Woche 9-10)
+- Design und Entwicklung der Benutzeroberfläche 
+- Implementierung der Datenbankstruktur für die Speicherung von Blutdruck- und Pulswerten
+- Entwicklung der Funktionen für die Eingabe und Verfolgung von Blutdruck- und Pulswerten
+- Integration von Datenvisualisierungen zur besseren Interpretation der Daten 
+- Testphase und Fehlerbehebung 
 
-## Version 1.1 - Erweiterte Funktionen (Q3 2024)
+## Version 1.1 - Erweiterte Funktionen 
 
 ### Funktionen:
 - **Benutzerprofile**
@@ -34,11 +34,11 @@
   - Erweiterte Optionen zur Anpassung und Konfiguration von Diagrammen und Grafiken.
 
 ### Meilensteine:
-- Entwicklung von Benutzerprofilen und Profilverwaltungsfunktionen (Woche 1-2)
-- Implementierung von Erinnerungen und Benachrichtigungen (Woche 3-4)
-- Hinzufügen von Exportfunktionen für Daten (Woche 5-6)
-- Verbesserung der Anpassungsmöglichkeiten für Datenvisualisierungen (Woche 7-8)
-- Integration von Feedbackmechanismen für Benutzer (Woche 9-10)
+- Entwicklung von Benutzerprofilen und Profilverwaltungsfunktionen 
+- Implementierung von Erinnerungen und Benachrichtigungen 
+- Hinzufügen von Exportfunktionen für Daten 
+- Verbesserung der Anpassungsmöglichkeiten für Datenvisualisierungen 
+- Integration von Feedbackmechanismen für Benutzer 
 
 
 Diese Roadmap bietet einen Überblick über die geplanten Entwicklungsphasen und Funktionserweiterungen für die Blutdruck- und Pulswerte-Anwendung. Sie wird regelmäßig aktualisiert.
