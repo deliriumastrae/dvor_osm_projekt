@@ -1,8 +1,7 @@
 streamlit
 PyGithub==1.55
 bcrypt
-PyJWT
-datetime
-streamlit_cookies_controller
+PyJWT>=2.0.0  
 pandas
 python-dotenv
+plotly 
