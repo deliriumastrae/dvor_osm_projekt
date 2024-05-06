@@ -119,8 +119,7 @@ def generateAuthToken(username):
         token = jwt.encode(payload, JWT_KEY, algorithm='HS256')
         return token 
     else:
-        return None
-
+        return st.write('иди на хуй')
 def authenticate(username, password):
     try:
         g = Github(GITHUB_TOKEN)
