@@ -12,6 +12,7 @@ from os.path import join, dirname
 from dotenv import load_dotenv
 from utility.auth_utilities import get_user_data
 
+st.set_page_config(page_title="EasyPressure", page_icon="🫀", layout="wide", initial_sidebar_state="expanded")
 dotenv_path=join(dirname(__file__), ".env")
 load_dotenv(dotenv_path)
 
@@ -23,7 +24,6 @@ JWT_KEY=os.environ.get("JWT_KEY")
 controller = CookieController()
 
 def main():
-    st.set_page_config(page_title="EasyPressure", page_icon="🫀", layout="wide", initial_sidebar_state="expanded")
     st.title("EasyPressure")
     st.sidebar.title("Menü")
 
