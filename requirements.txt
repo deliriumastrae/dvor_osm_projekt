@@ -1,5 +1,5 @@
 streamlit
-PyGithub
+PyGithub==1.55
 bcrypt
 jwt
 datetime
