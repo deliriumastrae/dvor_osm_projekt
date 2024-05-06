@@ -5,4 +5,4 @@ jwt
 datetime
 streamlit_cookies_controller
 pandas
-dotenv
+python-dotenv
