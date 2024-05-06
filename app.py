@@ -1,8 +1,8 @@
 import streamlit as st
+from streamlit_cookies_controller import CookieController
 import pandas as pd
 import bcrypt
 import io
-from streamlit_cookies_controller import CookieController
 import base64
 from jose import jwt
 import os
