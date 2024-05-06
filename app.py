@@ -4,7 +4,7 @@ import bcrypt
 import io
 from streamlit_cookies_controller import CookieController
 import base64
-import jwt
+from jose import jwt
 import os
 from github.MainClass import Github
 from github import GithubException
@@ -119,7 +119,8 @@ def generateAuthToken(username):
         token = jwt.encode(payload, JWT_KEY, algorithm='HS256')
         return token 
     else:
-        return st.write('иди на хуй')
+        return None
+    
 def authenticate(username, password):
     try:
         g = Github(GITHUB_TOKEN)

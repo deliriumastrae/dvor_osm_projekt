@@ -1,7 +1,7 @@
 streamlit
 PyGithub==1.55
 bcrypt
-PyJWT>=2.0.0  
+python-jose>=3.3.0
 pandas
 python-dotenv
 plotly 
