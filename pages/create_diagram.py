@@ -7,7 +7,7 @@ from streamlit_cookies_controller import CookieController
 from menu import menu
 from datetime import datetime, timedelta
 
-st.set_page_config(page_title="EasyPressure", page_icon="🫀")
+st.set_page_config(page_title="EasyPressure", page_icon="🫀",layout="wide")
 
 menu(authenticated=True)
 controller = CookieController()

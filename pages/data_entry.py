@@ -11,7 +11,7 @@ from utility.auth_utilities import decode_auth_token
 from streamlit_cookies_controller import CookieController
 controller = CookieController()
 
-st.set_page_config(page_title="EasyPressure", page_icon="🫀")
+st.set_page_config(page_title="EasyPressure", page_icon="🫀",layout="wide")
 menu(authenticated=True)
 
 GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN")
