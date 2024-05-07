@@ -6,6 +6,7 @@ import io
 import base64
 from jose import jwt
 import os
+import datetime
 from github.MainClass import Github
 from github import GithubException
 from os.path import join, dirname
@@ -13,7 +14,7 @@ from dotenv import load_dotenv
 from utility.auth_utilities import get_user_data
 
 
-st.set_page_config(page_title="EasyPressure", page_icon="🫀",layout="wide")
+st.set_page_config(page_title="EasyPressure", page_icon="🫀",)
 
 dotenv_path=join(dirname(__file__), ".env")
 load_dotenv(dotenv_path)
@@ -102,7 +103,12 @@ def login():
             user_data = get_user_data(username, REPO_NAME, LOGIN_FILE, LOGIN_COLUMNS)
             username = user_data['username'].item()
             token = generateAuthToken(username)
-            cookie_options ={'max_age': 86400 }
+            expires = datetime.datetime.utcnow() + datetime.timedelta(days=1)
+            cookie_options = {
+            'max_age': 86400, 
+            'expires': expires,  
+            'path': '/'  
+            }
             if token:
                 st.session_state.token = token
                 controller.set("auth_token", token, **cookie_options)
