@@ -45,7 +45,7 @@ if user_data is not None:
 
     if period == "Tag":
         end_date = datetime.now()
-        start_date = end_date - timedelta(days=1.001) 
+        start_date = end_date - timedelta(days=1) 
     elif period == "Woche":
         end_date = datetime.now().replace(hour=23, minute=59, second=59, microsecond=999999)
         start_date = end_date - timedelta(days=7) 
