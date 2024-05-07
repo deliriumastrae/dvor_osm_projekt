@@ -101,7 +101,7 @@ if user_data is not None:
             height=700
         )
 
-        st.plotly_chart(fig)
+        st.plotly_chart(fig, use_container_width=True)
     else:
         st.write("Keine Benutzerdaten verfügbar.")
 else:
