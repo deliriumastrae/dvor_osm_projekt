@@ -8,6 +8,7 @@ from menu import menu
 from datetime import datetime, timedelta
 
 st.set_page_config(page_title="EasyPressure", page_icon="🫀")
+
 menu(authenticated=True)
 controller = CookieController()
 from utility.auth_utilities import get_user_data
@@ -15,12 +16,11 @@ from utility.auth_utilities import get_user_data
 GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN")
 REPO_NAME = 'user_data'
 VALUE_FILE = 'user_value.csv'
-VALUE_COLUMNS = ['username','syst_pressure','diast_pressure','pulse','comment','date_time']
-
+VALUE_COLUMNS = ['username', 'syst_pressure', 'diast_pressure', 'pulse', 'comment', 'date_time']
 
 def get_auth_token():
     token = controller.get("auth_token")
-    cookie_options ={'max_age': 86400 }
+    cookie_options = {'max_age': 86400}
     controller.set("auth_token", token, **cookie_options)
     return token
 
@@ -34,41 +34,31 @@ if user_data is not None:
     user_data_display.columns = ['Datum', 'Systolischer Druck', 'Diastolischer Druck', 'Puls', 'Kommentar']
 
     user_data_display['Datum'] = pd.to_datetime(user_data_display['Datum'])
-
     user_data_display = user_data_display.sort_values(by='Datum', ascending=True)
-    
     user_data_display = user_data_display.fillna("")
-    
     user_data_display['Formatted Datum'] = user_data_display['Datum'].dt.strftime('%d.%m.%Y | %H:%M')
 
-    st.markdown("<h5 style='color: black;margin-bottom: -100px;'>Wählen Sie den Zeitraum: </h3></div>", unsafe_allow_html=True)
-    period = st.selectbox("", ("Tag", "Woche", "Monat", "Datum auswählen"))
-
+    st.markdown("<h5 style='color: black;margin-bottom: -100px;'>Wählen Sie den Zeitraum:</h3></div>", unsafe_allow_html=True)
+    period = st.selectbox("", ["Tag", "Woche", "Monat", "Datum auswählen"])
 
     if period == "Tag":
         end_date = datetime.now()
-        start_date = end_date - timedelta(days=1) 
+        start_date = end_date - timedelta(days=1)
     elif period == "Woche":
         end_date = datetime.now().replace(hour=23, minute=59, second=59, microsecond=999999)
-        start_date = end_date - timedelta(days=7) 
+        start_date = end_date - timedelta(days=7)
     elif period == "Monat":
         end_date = datetime.now().replace(hour=23, minute=59, second=59, microsecond=999999)
         start_date = end_date - timedelta(days=30)
-
-
     else:
         start_date = st.date_input("Wähle das Startdatum", value=(datetime.now() - timedelta(days=7)))
         end_date = st.date_input("Wähle das Enddatum", value=datetime.now())
-
         start_date = pd.to_datetime(start_date)
         end_date = pd.to_datetime(end_date)
 
     filtered_data = user_data_display[(user_data_display['Datum'] >= start_date) & (user_data_display['Datum'] <= end_date)]
 
     if not filtered_data.empty:
-        filtered_data['Datum'] = pd.to_datetime(filtered_data['Datum'], format='%d.%m.%Y | %H:%M')
-        filtered_data = filtered_data.sort_values(by='Datum', ascending=False)
-
         fig = go.Figure()
 
         for col in ['Systolischer Druck', 'Diastolischer Druck', 'Puls']:
@@ -76,32 +66,30 @@ if user_data is not None:
 
         fig.update_layout(
             title='Diagramm',
-            title_font_size=30,
+            title_font_size=20,
             xaxis=dict(
                 title='Datum',
                 titlefont=dict(
-                    size=30, 
-                    color='black' 
+                    size=18,
+                    color='black'
                 ),
             ),
             yaxis=dict(
                 title='Blutdruck/Puls',
                 titlefont=dict(
-                    size=30, 
-                    color='black'  
+                    size=18,
+                    color='black'
                 ),
             ),
-            font=dict(size=40),
-            legend=dict(font=dict(size=18)),
+            font=dict(size=18),
+            legend=dict(font=dict(size=16)),
             margin=dict(l=40, r=40, t=80, b=40),
-            plot_bgcolor='white', 
-            paper_bgcolor='white',  
-            hoverlabel=dict(font=dict(size=16)), 
-            width=1000, 
-            height=700
+            plot_bgcolor='white',
+            paper_bgcolor='white',
+            hoverlabel=dict(font=dict(size=14)),
         )
 
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, use_container_width=True) 
     else:
         st.write("Keine Benutzerdaten verfügbar.")
 else:
