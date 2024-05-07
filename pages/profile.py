@@ -4,7 +4,8 @@ from utility.auth_utilities import get_user_data
 from streamlit_cookies_controller import CookieController
 import jwt
 import os
-st.set_page_config(page_title="EasyPressure", page_icon="🫀", layout="wide")
+
+st.set_page_config(page_title="EasyPressure", page_icon="🫀")
 menu(authenticated=True)
 controller = CookieController()
 JWT_KEY = os.getenv("JWT_KEY")

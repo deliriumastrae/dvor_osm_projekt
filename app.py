@@ -13,7 +13,7 @@ from dotenv import load_dotenv
 from utility.auth_utilities import get_user_data
 
 
-st.set_page_config(page_title="EasyPressure", page_icon="🫀", layout="wide", initial_sidebar_state="expanded")
+st.set_page_config(page_title="EasyPressure", page_icon="🫀")
 
 dotenv_path=join(dirname(__file__), ".env")
 load_dotenv(dotenv_path)
@@ -102,10 +102,7 @@ def login():
             user_data = get_user_data(username, REPO_NAME, LOGIN_FILE, LOGIN_COLUMNS)
             username = user_data['username'].item()
             token = generateAuthToken(username)
-            cookie_options ={
-            'max_age': 86400  
-                            }
-            print(token)
+            cookie_options ={'max_age': 86400 }
             if token:
                 st.session_state.token = token
                 controller.set("auth_token", token, **cookie_options)

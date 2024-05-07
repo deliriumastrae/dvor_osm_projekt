@@ -17,7 +17,7 @@ def authenticated_menu():
         if controller.get("auth_token"):
             controller.remove("auth_token")
         else:
-            st.warning("Сессионный токен уже удален или не существует.")
+            st.warning("The session token has already been deleted or does not exist.")
         st.switch_page('app.py')
 
 def unauthenticated_menu():

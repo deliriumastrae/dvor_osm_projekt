@@ -11,7 +11,7 @@ REPO_NAME = 'user_data'
 VALUE_FILE = 'user_value.csv'
 VALUE_COLUMNS = ['username','syst_pressure','diast_pressure','pulse','comment','date_time']
 
-st.set_page_config(page_title="EasyPressure", page_icon="🫀", layout="wide")
+st.set_page_config(page_title="EasyPressure", page_icon="🫀")
 
 menu(authenticated=True)
 
