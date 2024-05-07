@@ -44,17 +44,14 @@ if user_data is not None:
 
 
     if period == "Tag":
-        end_date = datetime.now().replace(hour=23, minute=59, second=59, microsecond=999999)
-        start_date = datetime.now().replace(hour=0, minute=0, second=0, microsecond=0) - timedelta(days=1)
+        end_date = datetime.now()
+        start_date = end_date - timedelta(days=1.001) 
     elif period == "Woche":
         end_date = datetime.now().replace(hour=23, minute=59, second=59, microsecond=999999)
-        if end_date.weekday() != 6: 
-            start_date = end_date - timedelta(days=end_date.weekday() + 1)
-        else:
-            start_date = end_date - timedelta(days=6) 
+        start_date = end_date - timedelta(days=7) 
     elif period == "Monat":
         end_date = datetime.now().replace(hour=23, minute=59, second=59, microsecond=999999)
-        start_date = datetime(end_date.year, end_date.month, 1)
+        start_date = end_date - timedelta(days=30)
 
 
     else:
