@@ -103,10 +103,9 @@ def login():
             username = user_data['username'].item()
             token = generateAuthToken(username)
             cookie_options ={
-            'max_age': 86400,
-            'path': '/',      
-            'secure': True,    
+            'max_age': 86400  
                             }
+            print(token)
             if token:
                 st.session_state.token = token
                 controller.set("auth_token", token, **cookie_options)

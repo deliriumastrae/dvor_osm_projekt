@@ -21,7 +21,10 @@ def get_auth_token():
 
 def profile_page():
     token = get_auth_token()
-    
+    cookie_options ={
+            'max_age': 86400  
+                            }
+    controller.set("auth_token", token, **cookie_options)
     if not token:
         st.error("Token nicht gefunden.")
         return
