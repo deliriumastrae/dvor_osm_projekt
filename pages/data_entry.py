@@ -22,6 +22,8 @@ JWT_KEY = os.environ.get("JWT_KEY")
 
 def get_auth_token():
     token = controller.get("auth_token")
+    cookie_options ={'max_age': 86400 }
+    controller.set("auth_token", token, **cookie_options)
     return token
 
 def add_data_to_github(username, syst_pressure, diast_pressure, pulse, comment, date_time):

@@ -14,7 +14,8 @@ def authenticated_menu():
     if st.sidebar.button('Abmelden'):
         st.session_state.authenticated = False
         st.cache_data.clear()
-        controller.remove("auth_token")
+        if controller.get("auth_token"):
+            controller.remove("auth_token")
         st.switch_page('app.py')
 
 def unauthenticated_menu():

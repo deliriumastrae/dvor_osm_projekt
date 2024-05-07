@@ -17,9 +17,11 @@ REPO_NAME = 'user_data'
 VALUE_FILE = 'user_value.csv'
 VALUE_COLUMNS = ['username','syst_pressure','diast_pressure','pulse','comment','date_time']
 
-@st.cache_data
+
 def get_auth_token():
     token = controller.get("auth_token")
+    cookie_options ={'max_age': 86400 }
+    controller.set("auth_token", token, **cookie_options)
     return token
 
 username = decode_auth_token(get_auth_token())
