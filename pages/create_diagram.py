@@ -82,7 +82,7 @@ if user_data is not None:
                 ),
             ),
             font=dict(size=18),
-            legend=dict(font=dict(size=16)),
+            legend=dict(font=dict(size=14),orientation="h",y=-0.3),
             margin=dict(l=40, r=40, t=80, b=40),
             plot_bgcolor='white',
             paper_bgcolor='white',
