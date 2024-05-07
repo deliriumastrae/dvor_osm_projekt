@@ -17,7 +17,7 @@ menu(authenticated=True)
 
 controller = CookieController()
 
-@st.cache_data
+
 def get_auth_token():
     token = controller.get("auth_token")
     return token

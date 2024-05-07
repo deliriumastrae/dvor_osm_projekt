@@ -13,12 +13,12 @@ LOGIN_FILE = 'user_data.csv'
 LOGIN_COLUMNS = ['username', 'password_hash', 'first_name', 'last_name', 'dob']
 st.title("EasyPressure")
 
-@st.cache_data
+
 def get_auth_token():
     token = controller.get("auth_token")
     return token
 
-@st.cache_data
+
 def profile_page():
     token = get_auth_token()
     

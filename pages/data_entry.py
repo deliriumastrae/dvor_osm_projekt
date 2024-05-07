@@ -19,7 +19,7 @@ VALUE_FILE = 'user_value.csv'
 COLUMNS = ['username', 'syst_pressure', 'diast_pressure', 'pulse', 'comment', 'date_time']
 JWT_KEY = os.environ.get("JWT_KEY")
 
-@st.cache_data
+
 def get_auth_token():
     token = controller.get("auth_token")
     return token
