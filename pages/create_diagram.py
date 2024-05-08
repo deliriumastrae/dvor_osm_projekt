@@ -9,6 +9,7 @@ from utility.auth_utilities import decode_auth_token
 from streamlit_cookies_controller import CookieController
 from menu import menu
 from datetime import datetime, timedelta
+import kaleido
 
 st.set_page_config(page_title="EasyPressure", page_icon="🫀",layout="wide")
 
