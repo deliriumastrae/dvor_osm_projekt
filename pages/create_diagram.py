@@ -111,8 +111,15 @@ if user_data is not None:
 
 
         if st.button('Diagramm speichern', help='Lokale Schpeicherung Ihres Diagramms'):
-            st.write("Saving chart to:", chart_path)
             fig.write_image(chart_path,format='png', width=1600, height=1200)
+            with open(chart_path, "rb") as file:
+                btn = st.download_button(
+                label="Diagramm herunterladen",
+                data=file,
+                file_name=f"{current_date}.png",
+                mime="image/png")
+            st.write("Saving chart to:", chart_path)
+            
             st.success('Diagramm erfolgreich gespeichert!')
             time.sleep(5)
         
