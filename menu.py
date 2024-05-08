@@ -9,7 +9,7 @@ def authenticated_menu():
     st.sidebar.page_link("pages/create_diagram.py", label="Diagramm")
     st.sidebar.page_link("pages/archiv.py", label="Archiv")
     st.sidebar.page_link("pages/introduction.py", label="Einführung")
-    st.sidebar.page_link("pages/about.py", label="Über uns/Fragen/Feedback")
+    st.sidebar.page_link("pages/about.py", label="Über uns")
     if st.sidebar.button('Abmelden'):
         st.session_state.authenticated = False
         st.cache_data.clear()
