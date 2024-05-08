@@ -125,24 +125,34 @@ if user_data is not None:
 
 
     if st.button('Weiter zum Speichern', help='Speichern Sie das Diagramm als PDF zur manuellen Bildexportierung'):
-        save_directory = 'path_to_save' 
-        pdf_file_name = f"{current_date}.pdf"
+        try:
+            # Подготовка пути для сохранения файла
+            save_directory = 'path_to_save'
+            pdf_file_name = f"{current_date}.pdf"
 
-        if not os.path.exists(save_directory):
-            os.makedirs(save_directory)
+            if not os.path.exists(save_directory):
+                os.makedirs(save_directory)
 
-        pdf_file_path = os.path.join(save_directory, pdf_file_name)
+            pdf_file_path = os.path.join(save_directory, pdf_file_name)
 
-        fig.write_image(pdf_file_path)
+            # Сохранение графика в PDF
+            fig.write_image(pdf_file_path)
 
-        with open(pdf_file_path, "rb") as file:
-            btn = st.download_button(
-                label="Diagramm herunterladen",
-                data=file,
-                file_name=pdf_file_name,
-                mime='text/pdf')
+            # Предложение файла для скачивания
+            with open(pdf_file_path, "rb") as file:
+                btn = st.download_button(
+                    label="Diagramm herunterladen",
+                    data=file,
+                    file_name=pdf_file_name,
+                    mime='application/pdf')
+            
+            st.success('Diagramm erfolgreich als PDF gespeichert!')
 
-        st.success('Diagramm erfolgreich als PDF gespeichert! ')
+        except Exception as e:
+            st.error(f"Ein Fehler ist aufgetreten: {str(e)}")
+
+            # Дополнительно, для отладки, можно записать ошибку в лог или консоль
+            print(f"An error occurred: {str(e)}")
 
     token = get_auth_token()
     cookie_options ={'max_age': 86400 }
