@@ -107,7 +107,7 @@ if user_data is not None:
 
         current_date = datetime.now().strftime("%d-%m-%Y %H:%M")
         chart_path = f"{current_date}.png"
-        fig.write_image(chart_path, width=1600, height=1200)
+        fig.write_image(chart_path,format='png', width=1600, height=1200)
 
 
         if st.button('Diagramm speichern', help='Lokale Schpeicherung Ihres Diagramms'):
