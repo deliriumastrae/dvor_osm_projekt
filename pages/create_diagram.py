@@ -124,25 +124,25 @@ if user_data is not None:
 
 
 
-    if st.button('Weiter zum Speichern', help='Speichern Sie das Diagramm als HTML zur manuellen Bildexportierung'):
+    if st.button('Weiter zum Speichern', help='Speichern Sie das Diagramm als PDF zur manuellen Bildexportierung'):
         save_directory = 'path_to_save' 
-        html_file_name = f"{current_date}.html"
+        pdf_file_name = f"{current_date}.pdf"
 
         if not os.path.exists(save_directory):
             os.makedirs(save_directory)
 
-        html_file_path = os.path.join(save_directory, html_file_name)
+        pdf_file_path = os.path.join(save_directory, pdf_file_name)
 
-        fig.write_html(html_file_path, include_plotlyjs='cdn')
+        fig.write_image(pdf_file_path)
 
-        with open(html_file_path, "rb") as file:
+        with open(pdf_file_path, "rb") as file:
             btn = st.download_button(
                 label="Diagramm herunterladen",
                 data=file,
-                file_name=html_file_name,
-                mime='text/html')
+                file_name=pdf_file_name,
+                mime='text/pdf')
 
-        st.success('Diagramm erfolgreich als HTML gespeichert! Sie können es in Ihrem Browser öffnen.')
+        st.success('Diagramm erfolgreich als PDF gespeichert!')
 
     token = get_auth_token()
     cookie_options ={'max_age': 86400 }
