@@ -102,7 +102,21 @@ if user_data is not None:
             )
 
 
-        st.plotly_chart(fig, use_container_width=True) 
+        custom_css = """
+    <style>
+    .modebar-btn, .modebar-btn:active {
+        width: 10px !important;  
+        height: 40px !important;
+    }
+    .modebar-btn svg {
+        width: 40px !important; 
+        height: 30px !important; 
+    }
+    </style>
+    """
+        st.markdown(custom_css, unsafe_allow_html=True)
+
+        st.plotly_chart(fig, use_container_width=True, config={"displayModeBar": True, "toImageButtonOptions": {"format": "png"}})
 
         current_date = datetime.now().strftime("%d-%m-%Y %H:%M")
         chart_path = f"{current_date}.png"
@@ -126,7 +140,7 @@ if user_data is not None:
 
     if st.button('Weiter zum Speichern', help='Speichern Sie das Diagramm als PDF zur manuellen Bildexportierung'):
         try:
-            # Подготовка пути для сохранения файла
+            
             save_directory = 'path_to_save'
             pdf_file_name = f"{current_date}.pdf"
 
@@ -135,10 +149,8 @@ if user_data is not None:
 
             pdf_file_path = os.path.join(save_directory, pdf_file_name)
 
-            # Сохранение графика в PDF
             fig.write_image(pdf_file_path)
 
-            # Предложение файла для скачивания
             with open(pdf_file_path, "rb") as file:
                 btn = st.download_button(
                     label="Diagramm herunterladen",
@@ -150,9 +162,6 @@ if user_data is not None:
 
         except Exception as e:
             st.error(f"Ein Fehler ist aufgetreten: {str(e)}")
-
-            # Дополнительно, для отладки, можно записать ошибку в лог или консоль
-            print(f"An error occurred: {str(e)}")
 
     token = get_auth_token()
     cookie_options ={'max_age': 86400 }
