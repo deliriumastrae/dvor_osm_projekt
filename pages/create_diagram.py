@@ -175,7 +175,6 @@ if user_data is not None:
 
         mailto_link = f"mailto:{doctor_email}?subject={encoded_subject}&body={encoded_body}"
         st.markdown(f"<a href='{mailto_link}' target='_blank'>Daten per E-Mail senden</a>", unsafe_allow_html=True)
-    else:
-        st.write("Keine Benutzerdaten verfügbar.")
+    
 else:
     st.write("Keine Benutzerdaten verfügbar.")
