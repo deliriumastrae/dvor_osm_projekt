@@ -102,19 +102,19 @@ if user_data is not None:
             )
 
 
-        custom_css = """
-    <style>
-    .modebar-btn, .modebar-btn:active {
-        width: 10px !important;  
-        height: 40px !important;
-    }
-    .modebar-btn svg {
-        width: 40px !important; 
-        height: 30px !important; 
-    }
-    </style>
-    """
-        st.markdown(custom_css, unsafe_allow_html=True)
+    #     custom_css = """
+    # <style>
+    # .modebar-btn, .modebar-btn:active {
+    #     width: 10px !important;  
+    #     height: 40px !important;
+    # }
+    # .modebar-btn svg {
+    #     width: 40px !important; 
+    #     height: 30px !important; 
+    # }
+    # </style>
+    # """
+    #     st.markdown(custom_css, unsafe_allow_html=True)
 
         st.plotly_chart(fig, use_container_width=True, config={"displayModeBar": True, "toImageButtonOptions": {"format": "png"}})
 
@@ -150,7 +150,7 @@ if user_data is not None:
             pdf_file_path = os.path.join(save_directory, pdf_file_name)
 
             fig.write_image(pdf_file_path)
-
+            st.success('↓ Speichern Sie Ihr Diagramm als PDF.')
             with open(pdf_file_path, "rb") as file:
                 btn = st.download_button(
                     label="Diagramm herunterladen",
@@ -158,7 +158,7 @@ if user_data is not None:
                     file_name=pdf_file_name,
                     mime='application/pdf')
             
-            st.success('Diagramm erfolgreich als PDF gespeichert!')
+            
 
         except Exception as e:
             st.error(f"Ein Fehler ist aufgetreten: {str(e)}")
