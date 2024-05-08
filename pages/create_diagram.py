@@ -123,24 +123,37 @@ if user_data is not None:
         #     st.success('Diagramm erfolgreich gespeichert!')
         #     time.sleep(5)
 
-        if st.button('Diagramm speichern', help='Lokale Schpeicherung Ihres Diagramms'):
-            try:
-        # Сохранение изображения
-                fig.write_image(chart_path, format='png', width=1600, height=1200)
+
+
+
+    # Предполагаем, что fig уже создан с помощью Plotly
+    if st.button('Diagramm als HTML speichern', help='Speichern Sie das Diagramm als HTML zur manuellen Bildexportierung'):
+        # Создаем путь к файлу HTML с текущей датой и временем
+        current_date = datetime.now().strftime("%d-%m-%Y_%H-%M-%S")
+        save_directory = 'path_to_save'  # Укажите вашу директорию для сохранения
+        html_file_name = f"{current_date}.html"
         
-        # ИЗМЕНЕНИЕ 2: Проверка существования файла перед предложением его загрузки
-                if os.path.exists(chart_path):
-                    with open(chart_path, "rb") as file:
-                        btn = st.download_button(
-                        label="Diagramm herunterladen",
-                        data=file,
-                        file_name=f"{current_date}.png",
-                        mime="image/png")
-                st.write("Saving chart to:", chart_path)
-                st.success('Diagramm erfolgreich gespeichert!')
-                
-            except Exception as e:
-                st.error(f"Ein Fehler ist aufgetreten: {str(e)}")
+        # Проверяем существование директории, если нет, то создаем
+        if not os.path.exists(save_directory):
+            os.makedirs(save_directory)
+
+        html_file_path = os.path.join(save_directory, html_file_name)
+
+        # Сохранение графика в HTML
+        fig.write_html(html_file_path, include_plotlyjs='cdn')
+
+        # Предоставление ссылки на скачивание HTML файла
+        with open(html_file_path, "rb") as file:
+            btn = st.download_button(
+                label="Diagramm als HTML herunterladen",
+                data=file,
+                file_name=html_file_name,
+                mime='text/html'
+            )
+
+        st.success('Diagramm erfolgreich als HTML gespeichert! Sie können es in Ihrem Browser öffnen und als Bild speichern.')
+
+
         
         token = get_auth_token()
         cookie_options ={'max_age': 86400 }
