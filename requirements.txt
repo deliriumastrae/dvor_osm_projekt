@@ -7,3 +7,4 @@ pandas
 python-dotenv
 plotly 
 streamlit_cookies_controller
+kaleido
