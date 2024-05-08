@@ -144,37 +144,37 @@ if user_data is not None:
 
         st.success('Diagramm erfolgreich als HTML gespeichert! Sie können es in Ihrem Browser öffnen.')
 
-        token = get_auth_token()
-        cookie_options ={'max_age': 86400 }
-        controller.set("auth_token", token, **cookie_options)
-        if not token:
-            st.error("Token nicht gefunden.")
+    token = get_auth_token()
+    cookie_options ={'max_age': 86400 }
+    controller.set("auth_token", token, **cookie_options)
+    if not token:
+        st.error("Token nicht gefunden.")
         
-        try:
-            decoded_token = jwt.decode(token, JWT_KEY, algorithms=['HS256'])
-            username = decoded_token.get('user_name')
-            user_data =  get_user_data(username,REPO_NAME, LOGIN_FILE, LOGIN_COLUMNS)
-            user_data= user_data.iloc[0].to_dict()
-        except jwt.ExpiredSignatureError:
-            st.error("Der Token ist abgelaufen. Bitte melden Sie sich erneut an.")
+    try:
+        decoded_token = jwt.decode(token, JWT_KEY, algorithms=['HS256'])
+        username = decoded_token.get('user_name')
+        user_data =  get_user_data(username,REPO_NAME, LOGIN_FILE, LOGIN_COLUMNS)
+        user_data= user_data.iloc[0].to_dict()
+    except jwt.ExpiredSignatureError:
+        st.error("Der Token ist abgelaufen. Bitte melden Sie sich erneut an.")
         
-        Ihr_Name= (user_data['first_name'] + " " + user_data['last_name'])
+    Ihr_Name= (user_data['first_name'] + " " + user_data['last_name'])
 
-        subject = f"Übermittlung meiner Blutdruckdaten vom {current_date}." + Ihr_Name
-        body = (f"Sehr geehrte(r) Herr/Frau Doktor/in\n\n"
-                "anbei sende ich Ihnen meine Blutdruckdaten. "
-                "Ich bitte Sie, diese zu überprüfen und mich über eventuelle Auffälligkeiten oder Anpassungen meiner Behandlung zu informieren.\n\n"
-                "Vielen Dank für Ihre Unterstützung und Betreuung.\n\n"
-                "Freundlichen Grüsse\n"
-                + Ihr_Name )
+    subject = f"Übermittlung meiner Blutdruckdaten vom {current_date}." + Ihr_Name
+    body = (f"Sehr geehrte(r) Herr/Frau Doktor/in\n\n"
+            "anbei sende ich Ihnen meine Blutdruckdaten. "
+            "Ich bitte Sie, diese zu überprüfen und mich über eventuelle Auffälligkeiten oder Anpassungen meiner Behandlung zu informieren.\n\n"
+            "Vielen Dank für Ihre Unterstützung und Betreuung.\n\n"
+            "Freundlichen Grüsse\n"
+            + Ihr_Name )    
 
-        encoded_subject = quote(subject)
-        encoded_body = quote(body)
+    encoded_subject = quote(subject)
+    encoded_body = quote(body)
 
-        doctor_email = st.text_input("Geben Sie die E-Mail-Adresse Ihres Arztes ein")
+    doctor_email = st.text_input("Geben Sie die E-Mail-Adresse Ihres Arztes ein")
 
-        mailto_link = f"mailto:{doctor_email}?subject={encoded_subject}&body={encoded_body}"
-        st.markdown(f"<a href='{mailto_link}' target='_blank'>Daten per E-Mail senden</a>", unsafe_allow_html=True)
+    mailto_link = f"mailto:{doctor_email}?subject={encoded_subject}&body={encoded_body}"
+    st.markdown(f"<a href='{mailto_link}' target='_blank'>Daten per E-Mail senden</a>", unsafe_allow_html=True)
     
 else:
     st.write("Keine Benutzerdaten verfügbar.")
