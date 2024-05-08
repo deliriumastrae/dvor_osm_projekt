@@ -9,7 +9,6 @@ from utility.auth_utilities import decode_auth_token
 from streamlit_cookies_controller import CookieController
 from menu import menu
 from datetime import datetime, timedelta
-import kaleido
 
 st.set_page_config(page_title="EasyPressure", page_icon="🫀",layout="wide")
 
@@ -125,36 +124,26 @@ if user_data is not None:
 
 
 
-
-    # Предполагаем, что fig уже создан с помощью Plotly
-    if st.button('Diagramm als HTML speichern', help='Speichern Sie das Diagramm als HTML zur manuellen Bildexportierung'):
-        # Создаем путь к файлу HTML с текущей датой и временем
-        current_date = datetime.now().strftime("%d-%m-%Y_%H-%M-%S")
-        save_directory = 'path_to_save'  # Укажите вашу директорию для сохранения
+    if st.button('Weiter zum Speichern', help='Speichern Sie das Diagramm als HTML zur manuellen Bildexportierung'):
+        save_directory = 'path_to_save' 
         html_file_name = f"{current_date}.html"
-        
-        # Проверяем существование директории, если нет, то создаем
+
         if not os.path.exists(save_directory):
             os.makedirs(save_directory)
 
         html_file_path = os.path.join(save_directory, html_file_name)
 
-        # Сохранение графика в HTML
         fig.write_html(html_file_path, include_plotlyjs='cdn')
 
-        # Предоставление ссылки на скачивание HTML файла
         with open(html_file_path, "rb") as file:
             btn = st.download_button(
-                label="Diagramm als HTML herunterladen",
+                label="Diagramm herunterladen",
                 data=file,
                 file_name=html_file_name,
-                mime='text/html'
-            )
+                mime='text/html')
 
-        st.success('Diagramm erfolgreich als HTML gespeichert! Sie können es in Ihrem Browser öffnen und als Bild speichern.')
+        st.success('Diagramm erfolgreich als HTML gespeichert! Sie können es in Ihrem Browser öffnen.')
 
-
-        
         token = get_auth_token()
         cookie_options ={'max_age': 86400 }
         controller.set("auth_token", token, **cookie_options)
