@@ -142,7 +142,7 @@ if user_data is not None:
                 file_name=pdf_file_name,
                 mime='text/pdf')
 
-        st.success('Diagramm erfolgreich als PDF gespeichert!')
+        st.success('Diagramm erfolgreich als PDF gespeichert! ')
 
     token = get_auth_token()
     cookie_options ={'max_age': 86400 }

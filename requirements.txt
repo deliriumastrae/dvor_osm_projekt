@@ -1,4 +1,5 @@
 streamlit
+kaleido
 PyGithub==1.55
 bcrypt
 PyJWT>=2.0.0  
