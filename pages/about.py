@@ -1,8 +1,8 @@
 import streamlit as st
-from menu import menu
-st.set_page_config(page_title="EasyPressure", page_icon="🫀", layout="wide")
+from menu import menu  
+st.set_page_config(page_title="EasyPressure", page_icon="🫀",layout="wide")
 menu(authenticated=True)
-st.title("EasyPressure")
+
 def main():
     # CSS-Stil definieren
     st.markdown("""
@@ -19,6 +19,9 @@ def main():
     </style>
     """, unsafe_allow_html=True)
 
+    # Titel der Seite
+    st.title('Über uns')
+
     # Informationen über das Entwicklerteam
     st.markdown("""
     ## Unser Team:
@@ -31,6 +34,14 @@ def main():
         - <span class="mixed-color-text">**Hobbies:**</span> Sport, River Crusing, Musik, Tanzen, Kulturtourismus, Wissenschaft
         - <span class="mixed-color-text">**Kontakt:**</span> [dvorazuz@students.zhaw.ch](mailto:dvorazuz@students.zhaw.ch), [LinkedIn](https://www.linkedin.com/in/zuzana-dvorak)
     """, unsafe_allow_html=True)
+
+    # # Bilder der Teammitglieder nebeneinander anzeigen
+    # col1, col2 = st.columns(2)
+    # with col1:
+    #     st.image('link_zu_amals_bild.png', caption='Amal Osmanov')
+    # with col2:
+    #     st.image('link_zu_zuzanas_bild.png', caption='Zuzana Dvorak')
+
 
 if __name__ == '__main__':
     main()

@@ -146,7 +146,7 @@ if user_data is not None:
 
             if not os.path.exists(save_directory):
                 os.makedirs(save_directory)
-
+            
             pdf_file_path = os.path.join(save_directory, pdf_file_name)
 
             fig.write_image(pdf_file_path)
