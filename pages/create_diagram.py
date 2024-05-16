@@ -8,6 +8,7 @@ from utility.auth_utilities import decode_auth_token
 from streamlit_cookies_controller import CookieController
 from menu import menu
 from datetime import datetime, timedelta
+from PIL import Image as PILImage
 
 st.set_page_config(page_title="EasyPressure", page_icon="🫀",layout="wide")
 
@@ -106,7 +107,7 @@ if user_data is not None:
             )
 
 
-        st.plotly_chart(fig, use_container_width=True, config={"displayModeBar": True, "toImageButtonOptions": {"format": "png"}})
+        st.plotly_chart(fig,use_container_width=True)
 
         current_date = datetime.now().strftime("%d-%m-%Y %H:%M")
         chart_path = f"{current_date}.png"
@@ -132,7 +133,14 @@ if st.button('Weiter zum Speichern', help='Speichern Sie das Diagramm als PDF zu
         doc = SimpleDocTemplate(pdf_file_path, pagesize=letter)
         elements = []
 
-        
+        fig.write_image(chart_path, format='png', width=800, height=400)  
+        img = PILImage.open(chart_path)
+        img_rotated = img.rotate(270, expand=True)
+        img_rotated.save(chart_path)
+        image = Image(chart_path, width=350, height=630)  
+        elements.append(image)
+
+
         table_data = [data_table.columns.tolist()] + data_table.values.tolist()
         table = Table(table_data)
         table.setStyle(TableStyle([('BACKGROUND', (0, 0), (-1, 0), colors.grey),
@@ -145,11 +153,6 @@ if st.button('Weiter zum Speichern', help='Speichern Sie das Diagramm als PDF zu
         elements.append(table)
 
         
-        chart_path = f"{current_date}.png"
-        fig.write_image(chart_path, format='png', width=600, height=400)
-        image = Image(chart_path, width=600, height=400)
-        elements.append(image)
-
         
         doc.build(elements)
     
