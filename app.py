@@ -6,7 +6,7 @@ import io
 import base64
 from jose import jwt
 import os
-from datetime import datetime
+import datetime
 from github.MainClass import Github
 from github import GithubException
 from os.path import join, dirname
@@ -52,10 +52,9 @@ def register():
     first_name = st.text_input("Vorname", key="register_first_name")
     last_name = st.text_input("Nachname", key="register_last_name")
 
-    min_date = datetime(1930, 1, 1)
-    max_date = datetime(2024, 12, 31)
+    
 
-    dob = st.date_input("Geburtsdatum (JJJJ-MM-TT)", min_value=min_date, max_value=max_date, key="register_dob")
+    dob = st.date_input("Geburtsdatum (JJJJ-MM-TT)", min_value=datetime.date(1930, 1, 1), max_value=datetime.date(2024, 12, 31), key="register_dob")
 
     if not username or not password or not confirm_password or not first_name or not last_name or not dob:
         st.warning("Bitte füllen Sie alle Felder aus und und drücken Sie Enter.")
