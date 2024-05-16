@@ -39,3 +39,24 @@ def get_user_data(username, repo_name, file_name, columns):
     except GithubException as e:
         st.error(f"Fehler beim Abrufen der Benutzerdaten: {e}")
         return None
+
+def update_user_data(username, repo_name, file_name, columns, new_data):
+    try:
+        g = Github(GITHUB_TOKEN)
+        repo = g.get_user().get_repo(repo_name)
+        contents = repo.get_contents(file_name)
+
+        existing_data = pd.read_csv(io.StringIO(base64.b64decode(contents.content).decode('utf-8')), names=columns)
+        
+        user_index = existing_data[existing_data['username'] == username].index
+        if not user_index.empty:
+            for key, value in new_data.items():
+                if key in columns:
+                    existing_data.at[user_index[0], key] = value
+        
+        updated_content = existing_data.to_csv(index=False, header=False)
+        repo.update_file(contents.path, "Update user data", updated_content, contents.sha)
+        st.success("Benutzerdaten wurden erfolgreich aktualisiert.")
+    except GithubException as e:
+        st.error(f"Fehler beim Aktualisieren der Benutzerdaten: {e}")
+        return None
