@@ -2,7 +2,6 @@ import streamlit as st
 import pandas as pd
 import plotly.graph_objs as go
 import os
-import time
 import jwt
 from urllib.parse import quote
 from utility.auth_utilities import decode_auth_token

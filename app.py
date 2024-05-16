@@ -52,7 +52,15 @@ def register():
     confirm_password = st.text_input("Passwort bestätigen", type="password", key="register_confirm_password")
     first_name = st.text_input("Vorname", key="register_first_name")
     last_name = st.text_input("Nachname", key="register_last_name")
-    dob = st.date_input("Geburtsdatum (JJJJ-MM-TT)", key="register_dob")
+
+    current_year = datetime.now().year
+    min_year = current_year - 120
+    max_year = current_year 
+
+    dob = st.date_input("Geburtsdatum (JJJJ-MM-TT)", 
+                    key="register_dob",
+                    min_value=datetime(min_year, 1, 1),
+                    max_value=datetime(max_year, 12, 31))
     
     if not username or not password or not confirm_password or not first_name or not last_name or not dob:
         st.warning("Bitte füllen Sie alle Felder aus und und drücken Sie Enter.")
