@@ -45,7 +45,7 @@ if user_data is not None:
     user_data_display['Formatted Datum'] = user_data_display['Datum'].dt.strftime('%d.%m.%Y | %H:%M')
 
     st.markdown("<h5 style='color: black;margin-bottom: -100px;'>Wählen Sie den Zeitraum:</h3></div>", unsafe_allow_html=True)
-    period = st.selectbox("", ["Monat","Woche", "Tag",  "Datum auswählen"])
+    period = st.selectbox("", ["Monat", "Woche", "Tag",  "Datum auswählen"])
 
     if period == "Monat":
         end_date = datetime.now().replace(hour=23, minute=59, second=59, microsecond=999999)
