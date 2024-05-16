@@ -10,11 +10,6 @@ from streamlit_cookies_controller import CookieController
 from menu import menu
 from datetime import datetime, timedelta
 
-
-from reportlab.lib import colors
-from reportlab.lib.pagesizes import letter
-from reportlab.platypus import SimpleDocTemplate, Table, TableStyle, Image
-
 st.set_page_config(page_title="EasyPressure", page_icon="🫀",layout="wide")
 
 menu(authenticated=True)
@@ -42,7 +37,7 @@ user_data = get_user_data(username, REPO_NAME, VALUE_FILE, VALUE_COLUMNS)
 
 if user_data is not None:
     user_data_display = user_data[['date_time', 'syst_pressure', 'diast_pressure', 'pulse', 'comment']]
-    user_data_display.columns = ['Datum', 'Systolischer Druck', 'Diastolischer Druck', 'Puls', 'Kommentar']
+    user_data_display.columns = ['Datum', 'Syst/D', 'Dast/D', 'Puls', 'Kommentar']
 
     user_data_display['Datum'] = pd.to_datetime(user_data_display['Datum'])
     user_data_display = user_data_display.sort_values(by='Datum', ascending=True)
@@ -73,11 +68,11 @@ if user_data is not None:
 
         filtered_data = filtered_data.sort_values(by='Datum', ascending=False)
         filtered_data_reset = filtered_data.reset_index(drop=True)
-        data_table =filtered_data_reset[['Datum', 'Systolischer Druck', 'Diastolischer Druck', 'Puls', 'Kommentar']]
+        data_table =filtered_data_reset[['Datum', 'Syst/D', 'Dast/D', 'Puls', 'Kommentar']]
         
         fig = go.Figure()
         colors = [ 'red','#87CEEB','purple']
-        for idx, col in enumerate(['Systolischer Druck', 'Diastolischer Druck', 'Puls']):
+        for idx, col in enumerate(['Syst/D', 'Dast/D', 'Puls']):
             fig.add_trace(go.Scatter(
             x=filtered_data['Datum'], 
             y=filtered_data[col], 
@@ -117,7 +112,12 @@ if user_data is not None:
         current_date = datetime.now().strftime("%d-%m-%Y %H:%M")
         chart_path = f"{current_date}.png"
 
+else:
+    st.write("Keine Benutzerdaten sind vorhanden")
 
+from reportlab.lib import colors
+from reportlab.lib.pagesizes import letter
+from reportlab.platypus import SimpleDocTemplate, Table, TableStyle, Image
 
 if st.button('Weiter zum Speichern', help='Speichern Sie das Diagramm als PDF zur manuellen Bildexportierung'):
     try:
@@ -169,33 +169,30 @@ if st.button('Weiter zum Speichern', help='Speichern Sie das Diagramm als PDF zu
 
    
 
-    token = get_auth_token()
+token = get_auth_token()
         
-    try:
-        decoded_token = jwt.decode(token, JWT_KEY, algorithms=['HS256'])
-        username = decoded_token.get('user_name')
-        user_data =  get_user_data(username,REPO_NAME, LOGIN_FILE, LOGIN_COLUMNS)
-        user_data= user_data.iloc[0].to_dict()
-    except jwt.ExpiredSignatureError:
+try:
+    decoded_token = jwt.decode(token, JWT_KEY, algorithms=['HS256'])
+    username = decoded_token.get('user_name')
+    user_data =  get_user_data(username,REPO_NAME, LOGIN_FILE, LOGIN_COLUMNS)
+    user_data= user_data.iloc[0].to_dict()
+except jwt.ExpiredSignatureError:
         st.error("Der Token ist abgelaufen. Bitte melden Sie sich erneut an.")
         
-    Ihr_Name= (user_data['first_name'] + " " + user_data['last_name'])
+Ihr_Name= (user_data['first_name'] + " " + user_data['last_name'])
 
-    subject = f"Übermittlung meiner Blutdruckdaten vom {current_date}." + Ihr_Name
-    body = (f"Sehr geehrte(r) Herr/Frau Doktor/in\n\n"
+subject = f"Übermittlung meiner Blutdruckdaten vom {current_date}." + Ihr_Name
+body = (f"Sehr geehrte(r) Herr/Frau Doktor/in\n\n"
             "anbei sende ich Ihnen meine Blutdruckdaten. "
             "Ich bitte Sie, diese zu überprüfen und mich über eventuelle Auffälligkeiten oder Anpassungen meiner Behandlung zu informieren.\n\n"
             "Vielen Dank für Ihre Unterstützung und Betreuung.\n\n"
             "Freundlichen Grüsse\n"
             + Ihr_Name )    
 
-    encoded_subject = quote(subject)
-    encoded_body = quote(body)
+encoded_subject = quote(subject)
+encoded_body = quote(body)
 
-    doctor_email = st.text_input("Geben Sie die E-Mail-Adresse Ihres Arztes ein")
+doctor_email = st.text_input("Geben Sie die E-Mail-Adresse Ihres Arztes ein")
 
-    mailto_link = f"mailto:{doctor_email}?subject={encoded_subject}&body={encoded_body}"
-    st.markdown(f"<a href='{mailto_link}' target='_blank'>Daten per E-Mail senden</a>", unsafe_allow_html=True)
-    
-else:
-    st.write("  ")
+mailto_link = f"mailto:{doctor_email}?subject={encoded_subject}&body={encoded_body}"
+st.markdown(f"<a href='{mailto_link}' target='_blank'>Daten per E-Mail senden</a>", unsafe_allow_html=True)
