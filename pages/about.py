@@ -24,7 +24,7 @@ def main():
 
     # Informationen über das Entwicklerteam
     st.markdown("""
-    ## Unser Team:
+    
     - <span class="name mixed-color-text">**Amal Osmanov:**</span> Student der Biomedizinischen Labordiagnostik Bachelor an der ZHAW <span class="nowrap">Wädenswil</span>
         - <span class="mixed-color-text">**Interessen:**</span> Biologie, Medizin, Genetik, Molekularbiologie
         - <span class="mixed-color-text">**Hobbies:**</span> Gitarre, Reisen, Logik
