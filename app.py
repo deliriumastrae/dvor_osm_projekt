@@ -50,7 +50,7 @@ def main():
         """, unsafe_allow_html=True)
 
 
-    st.sidebar.title("Menü")
+    st.sidebar.title("Menu")
 
     if "authenticated" not in st.session_state:
         st.session_state.authenticated = False
