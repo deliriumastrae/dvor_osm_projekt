@@ -12,7 +12,9 @@ from github import GithubException
 from os.path import join, dirname
 from dotenv import load_dotenv
 from utility.auth_utilities import get_user_data
-page_title="EasyPressure"
+
+st.set_page_config(page_title="EasyPressure", 
+                   page_icon="🫀")
 controller = CookieController()
 
 dotenv_path=join(dirname(__file__), ".env")
