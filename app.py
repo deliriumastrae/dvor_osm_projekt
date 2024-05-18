@@ -23,15 +23,10 @@ REPO_NAME = 'user_data'
 LOGIN_FILE = 'user_data.csv'
 LOGIN_COLUMNS = ['username', 'password_hash', 'first_name', 'last_name', 'dob']
 JWT_KEY=os.environ.get("JWT_KEY")
-controller = CookieController()
-
-
 
 def get_image_base64(image_path):
     with open(image_path, "rb") as image_file:
         return base64.b64encode(image_file.read()).decode('utf-8')
-
-
 
 def main():
     image_path = 'docs/anmelden.jpeg' 
