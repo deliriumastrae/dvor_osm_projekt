@@ -6,12 +6,12 @@ import pandas as pd
 from utility.auth_utilities import decode_auth_token
 from utility.auth_utilities import get_user_data
 
+st.set_page_config(page_title="EasyPressure", page_icon="🫀",layout="wide")
+
 GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN")
 REPO_NAME = 'user_data'
 VALUE_FILE = 'user_value.csv'
 VALUE_COLUMNS = ['username','syst_pressure','diast_pressure','pulse','comment','date_time']
-
-st.set_page_config(page_title="EasyPressure", page_icon="🫀",layout="wide")
 
 menu(authenticated=True)
 

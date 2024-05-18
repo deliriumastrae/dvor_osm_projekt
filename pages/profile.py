@@ -4,9 +4,10 @@ from utility.auth_utilities import get_user_data, update_user_data
 from streamlit_cookies_controller import CookieController
 import jwt
 import os
-controller = CookieController()
 
 st.set_page_config(page_title="EasyPressure", page_icon="🫀", layout="wide")
+controller = CookieController()
+
 st.title("EasyPressure")
 menu(authenticated=True)
 
