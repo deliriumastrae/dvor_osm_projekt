@@ -13,6 +13,7 @@ from os.path import join, dirname
 from dotenv import load_dotenv
 from utility.auth_utilities import get_user_data
 
+controller = CookieController()
 dotenv_path=join(dirname(__file__), ".env")
 load_dotenv(dotenv_path)
 
@@ -21,7 +22,7 @@ REPO_NAME = 'user_data'
 LOGIN_FILE = 'user_data.csv'
 LOGIN_COLUMNS = ['username', 'password_hash', 'first_name', 'last_name', 'dob']
 JWT_KEY=os.environ.get("JWT_KEY")
-controller = CookieController()
+
 
 
 
