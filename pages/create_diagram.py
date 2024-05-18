@@ -130,7 +130,7 @@ if st.button('Weiter zum Speichern', help='Speichern Sie das Diagramm als PDF zu
         doc = SimpleDocTemplate(pdf_file_path, pagesize=letter)
         elements = []
 
-        fig.update_layout(yaxis=dict(title='',nticks=20 ))
+        fig.update_layout(yaxis=dict(title='',nticks=20, tickfont=dict(size=9)),xaxis=dict(tickfont=dict(size=10)))
         fig.write_image(chart_path, format='png', width=800, height=400)  
         img = PILImage.open(chart_path)
         img_rotated = img.rotate(270, expand=True)
