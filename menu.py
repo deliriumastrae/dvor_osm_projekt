@@ -8,10 +8,7 @@ def authenticated_menu():
 
     st.sidebar.image(image, use_column_width=True)
 
-
-
-
-    st.sidebar.title("Menü")
+    st.sidebar.title("Menü ")
     st.sidebar.page_link("pages/data_entry.py", label="Werte eingeben")
     st.sidebar.page_link("pages/create_diagram.py", label="Diagramm")
     st.sidebar.page_link("pages/archiv.py", label="Archiv")
