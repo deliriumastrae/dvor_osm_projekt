@@ -37,7 +37,7 @@ user_data = get_user_data(username, REPO_NAME, VALUE_FILE, VALUE_COLUMNS)
 
 if user_data is not None:
     user_data_display = user_data[['date_time', 'syst_pressure', 'diast_pressure', 'pulse', 'comment']]
-    user_data_display.columns = ['Datum', 'Syst/D', 'Dast/D', 'Puls', 'Kommentar']
+    user_data_display.columns = ['Datum', 'Syst/D', 'Diast/D', 'Puls', 'Kommentar']
 
     user_data_display['Datum'] = pd.to_datetime(user_data_display['Datum'])
     user_data_display = user_data_display.sort_values(by='Datum', ascending=True)
@@ -68,15 +68,15 @@ if user_data is not None:
 
         filtered_data = filtered_data.sort_values(by='Datum', ascending=False)
         filtered_data_reset = filtered_data.reset_index(drop=True)
-        data_table =filtered_data_reset[['Datum', 'Syst/D', 'Dast/D', 'Puls', 'Kommentar']]
+        data_table =filtered_data_reset[['Datum', 'Syst/D', 'Diast/D', 'Puls', 'Kommentar']]
         
         fig = go.Figure()
         colors = [ 'red','#87CEEB','purple']
-        for idx, col in enumerate(['Syst/D', 'Dast/D', 'Puls']):
+        for idx, col in enumerate(['Syst/D', 'Diast/D', 'Puls']):
             fig.add_trace(go.Scatter(
             x=filtered_data['Datum'], 
             y=filtered_data[col], 
-            mode='lines', 
+            mode='lines+markers', 
             name=col, 
             line=dict(color=colors[idx])  
             ))
@@ -86,18 +86,15 @@ if user_data is not None:
                 title_font_size=20,
                 xaxis=dict(
                     title='Datum',
-                    titlefont=dict(
-                        size=16,
-                        color='black'
-                    ),
+                    titlefont=dict(size=16,color='black'),
                 ),
+                
                 yaxis=dict(
                     title='Blutdruck/Puls',
-                    titlefont=dict(
-                        size=16,
-                        color='black'
-                    ),
+                    titlefont=dict(size=16,color='black'),
+                    nticks=20 
                 ),
+
                 font=dict(size=18),
                 legend=dict(font=dict(size=14), orientation="h", y=-0.3),
                 margin=dict(l=40, r=40, t=80, b=40),
@@ -133,11 +130,12 @@ if st.button('Weiter zum Speichern', help='Speichern Sie das Diagramm als PDF zu
         doc = SimpleDocTemplate(pdf_file_path, pagesize=letter)
         elements = []
 
+        fig.update_layout(yaxis=dict(title='',nticks=20 ))
         fig.write_image(chart_path, format='png', width=800, height=400)  
         img = PILImage.open(chart_path)
         img_rotated = img.rotate(270, expand=True)
         img_rotated.save(chart_path)
-        image = Image(chart_path, width=350, height=630)  
+        image = Image(chart_path, width=456, height=636)  
         elements.append(image)
 
 
