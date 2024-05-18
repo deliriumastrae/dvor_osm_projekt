@@ -25,8 +25,31 @@ LOGIN_COLUMNS = ['username', 'password_hash', 'first_name', 'last_name', 'dob']
 JWT_KEY=os.environ.get("JWT_KEY")
 controller = CookieController()
 
+
+
+def get_image_base64(image_path):
+    with open(image_path, "rb") as image_file:
+        return base64.b64encode(image_file.read()).decode('utf-8')
+
+
+
 def main():
-    st.title("EasyPressure")
+    image_path = 'docs/anmelden.jpeg' 
+    encoded_image = get_image_base64(image_path)  
+
+    st.markdown(f"""
+        <style>
+        [data-testid="stAppViewContainer"] {{
+            background: url("data:image/jpeg;base64,{encoded_image}");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }}
+        
+        </style>
+        """, unsafe_allow_html=True)
+
+
     st.sidebar.title("Menü")
 
     if "authenticated" not in st.session_state:

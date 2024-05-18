@@ -51,7 +51,7 @@ def add_data_to_github(username, syst_pressure, diast_pressure, pulse, comment, 
         st.error(f"Fehler beim Hinzufügen von Daten zu GitHub: {e}")
         return False
 username= decode_auth_token(get_auth_token())
-st.write("Benutzername:", username)
+st.markdown(f"**Willkommen bei EasyPressure, {username}!** Bitte tragen Sie Ihre aktuellen Blutdruck- und Pulswerte ein.")
 
 st.markdown("<h2 style='color: black; font-weight: bold; font-size: 18px; margin-bottom: -80px;'>Bitte wählen Sie den Eingabetyp:</h2>", unsafe_allow_html=True)
 option = st.radio("", ("Schieberegler", "Zahleneingabe"))

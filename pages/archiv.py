@@ -54,6 +54,8 @@ if user_data is not None:
 else:
     st.write("Benutzerdaten sind nicht gefunden.")
 
-
-st.session_state.user_data_display = user_data_display
-st.cache(user_data_display)
+try:
+    st.session_state.user_data_display = user_data_display
+    st.cache(user_data_display)
+except: 
+    st.error ("Bitte tragen Sie Ihre aktuellen Blutdruck- und Pulswerte ein.")

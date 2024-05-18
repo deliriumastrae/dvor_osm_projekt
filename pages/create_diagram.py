@@ -113,7 +113,7 @@ if user_data is not None:
         chart_path = f"{current_date}.png"
 
 else:
-    st.write("Keine Benutzerdaten sind vorhanden")
+    st.write("Keine Benutzerdaten sind vorhanden.")
 
 from reportlab.lib import colors
 from reportlab.lib.pagesizes import letter
@@ -183,18 +183,23 @@ except jwt.ExpiredSignatureError:
         
 Ihr_Name= (user_data['first_name'] + " " + user_data['last_name'])
 
-subject = f"Übermittlung meiner Blutdruckdaten vom {current_date}." + Ihr_Name
-body = (f"Sehr geehrte(r) Herr/Frau Doktor/in\n\n"
+try: 
+    subject = f"Übermittlung meiner Blutdruckdaten vom {current_date}." + Ihr_Name
+
+    body = (f"Sehr geehrte(r) Herr/Frau Doktor/in\n\n"
             "anbei sende ich Ihnen meine Blutdruckdaten. "
             "Ich bitte Sie, diese zu überprüfen und mich über eventuelle Auffälligkeiten oder Anpassungen meiner Behandlung zu informieren.\n\n"
             "Vielen Dank für Ihre Unterstützung und Betreuung.\n\n"
             "Freundlichen Grüsse\n"
             + Ihr_Name )    
 
-encoded_subject = quote(subject)
-encoded_body = quote(body)
+    encoded_subject = quote(subject)
+    encoded_body = quote(body)
 
-doctor_email = st.text_input("Geben Sie die E-Mail-Adresse Ihres Arztes ein")
+    doctor_email = st.text_input("Geben Sie die E-Mail-Adresse Ihres Arztes ein")
 
-mailto_link = f"mailto:{doctor_email}?subject={encoded_subject}&body={encoded_body}"
-st.markdown(f"<a href='{mailto_link}' target='_blank'>Daten per E-Mail senden</a>", unsafe_allow_html=True)
+    mailto_link = f"mailto:{doctor_email}?subject={encoded_subject}&body={encoded_body}"
+    st.markdown(f"<a href='{mailto_link}' target='_blank'>Daten per E-Mail senden</a>", unsafe_allow_html=True)
+
+except: 
+    st.error ("Bitte tragen Sie Ihre aktuellen Blutdruck- und Pulswerte ein.")

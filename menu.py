@@ -1,8 +1,16 @@
 import streamlit as st
 from streamlit_cookies_controller import CookieController
+from PIL import Image
 controller = CookieController()
 
 def authenticated_menu():
+    image = Image.open("docs/2024-05-18 13.02.22.jpeg")  
+
+    st.sidebar.image(image, use_column_width=True)
+
+
+
+
     st.sidebar.title("Menü")
     st.sidebar.page_link("pages/data_entry.py", label="Werte eingeben")
     st.sidebar.page_link("pages/create_diagram.py", label="Diagramm")
