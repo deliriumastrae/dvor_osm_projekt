@@ -60,27 +60,28 @@ def main():
         if token:
             st.session_state.token = token
 
-    page = st.sidebar.radio("Wählen Sie eine Option:", ["Anmelden", "Registeren"])
+    page = st.sidebar.radio("**Wählen Sie eine Option:**", ["**Anmelden**", "**Registeren**"])
 
-    if page == "Anmelden":
+    if page == "**Anmelden**":
         login()
-    elif page == "Registeren":
+    elif page == "**Registeren**":
         register()
 
 def register():
-    st.subheader("Registrieren")
-    username = st.text_input("Benutzername", key="register_username")
-    password = st.text_input("Passwort", type="password", key="register_password")
-    confirm_password = st.text_input("Passwort bestätigen", type="password", key="register_confirm_password")
-    first_name = st.text_input("Vorname", key="register_first_name")
-    last_name = st.text_input("Nachname", key="register_last_name")
+    st.title(" ")
+    st.title("Registrieren")
+    username = st.text_input("**Benutzername**", key="register_username")
+    password = st.text_input("**Passwort**", type="password", key="register_password")
+    confirm_password = st.text_input("**Passwort bestätigen**", type="password", key="register_confirm_password")
+    first_name = st.text_input("**Vorname**", key="register_first_name")
+    last_name = st.text_input("**Nachname**", key="register_last_name")
 
     
 
-    dob = st.date_input("Geburtsdatum (JJJJ-MM-TT)", min_value=datetime.date(1930, 1, 1), max_value=datetime.date(2024, 12, 31), key="register_dob")
+    dob = st.date_input("**Geburtsdatum (JJJJ-MM-TT)**", min_value=datetime.date(1930, 1, 1), max_value=datetime.date(2024, 12, 31), key="register_dob")
 
     if not username or not password or not confirm_password or not first_name or not last_name or not dob:
-        st.warning("Bitte füllen Sie alle Felder aus und und drücken Sie Enter.")
+        st.warning("**Bitte füllen Sie alle Felder aus und und drücken Sie Enter.**")
         return
     
     if password != confirm_password:
@@ -118,9 +119,12 @@ def add_user_to_github(username, password, first_name, last_name, dob):
         return False
 
 def login():
-    st.subheader("Anmelden")
-    username = st.text_input("Benutzername", key="login_username")
-    password = st.text_input("Passwort", type="password", key="login_password")
+    st.title(" ")
+    st.title("Anmelden")
+    
+    username = st.text_input("**Benutzername**", key="login_username")
+    password = st.text_input("**Passwort**", type="password", key="login_password")
+    
     
     if st.button("Anmelden"):
         if authenticate(username, password):

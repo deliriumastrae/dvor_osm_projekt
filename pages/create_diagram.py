@@ -116,7 +116,7 @@ from reportlab.lib import colors
 from reportlab.lib.pagesizes import letter
 from reportlab.platypus import SimpleDocTemplate, Table, TableStyle, Image
 
-if st.button('Weiter zum Speichern', help='Speichern Sie das Diagramm als PDF zur manuellen Bildexportierung'):
+if st.button('**Weiter zum Speichern**', help='Speichern Sie das Diagramm als PDF zur manuellen Bildexportierung'):
     try:
         save_directory = 'path_to_save'
         pdf_file_name = f"{current_date}.pdf"
@@ -154,10 +154,10 @@ if st.button('Weiter zum Speichern', help='Speichern Sie das Diagramm als PDF zu
         
         doc.build(elements)
     
-        st.success(f'↓ PDF-Datei speichern')
+        st.success(f'**↓ PDF-Datei speichern**')
         with open(pdf_file_path, "rb") as file:
             btn = st.download_button(
-            label="PDF herunterladen",
+            label="**PDF herunterladen**",
             data=file,
             file_name=pdf_file_name,
             mime='application/pdf')
@@ -194,10 +194,10 @@ try:
     encoded_subject = quote(subject)
     encoded_body = quote(body)
 
-    doctor_email = st.text_input("Geben Sie die E-Mail-Adresse Ihres Arztes ein")
+    doctor_email = st.text_input("**Geben Sie die E-Mail-Adresse Ihres Arztes ein**")
 
     mailto_link = f"mailto:{doctor_email}?subject={encoded_subject}&body={encoded_body}"
-    st.markdown(f"<a href='{mailto_link}' target='_blank'>Daten per E-Mail senden</a>", unsafe_allow_html=True)
+    st.markdown(f"<a href='{mailto_link}' target='_blank'>**Daten per E-Mail senden**</a>", unsafe_allow_html=True)
 
 except: 
     st.error ("Bitte tragen Sie Ihre aktuellen Blutdruck- und Pulswerte ein.")

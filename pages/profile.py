@@ -35,11 +35,11 @@ def profile_page():
             user_data = user_data.iloc[0].to_dict()
             st.write("Benutzername: " + user_data['username'])
             
-            first_name = st.text_input("Vorname", value=user_data['first_name'])
-            last_name = st.text_input("Nachname", value=user_data['last_name'])
-            dob = st.text_input("Geburtsdatum (JJJJ-MM-TT)", value=user_data['dob'])
+            first_name = st.text_input("**Vorname:**", value=user_data['first_name'])
+            last_name = st.text_input("**Nachname:**", value=user_data['last_name'])
+            dob = st.text_input("**Geburtsdatum (JJJJ-MM-TT):**", value=user_data['dob'])
             
-            if st.button("Änderungen speichern"):
+            if st.button("**Änderungen speichern**"):
                 new_data = {
                     'first_name': first_name,
                     'last_name': last_name,
