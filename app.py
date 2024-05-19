@@ -15,7 +15,10 @@ from dotenv import load_dotenv
 st.set_page_config(page_title="EasyPressure", page_icon="🫀")
 
 from utility.auth_utilities import get_user_data
-controller = CookieController()
+try:
+    controller = CookieController()
+except Exception as e:
+    st.error(f"Error initializing cookie controller: {str(e)}")
 
 dotenv_path=join(dirname(__file__), ".env")
 load_dotenv(dotenv_path)
