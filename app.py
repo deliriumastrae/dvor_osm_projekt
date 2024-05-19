@@ -57,11 +57,11 @@ def main():
         if token:
             st.session_state.token = token
 
-    page = st.sidebar.radio("**Wählen Sie eine Option:**", ["**Anmelden**", "**Registeren**"])
+    page = st.sidebar.radio("**Wählen Sie eine Option:**", ["**EINLOGEN**", "**REGISTRIEREN**"])
 
-    if page == "**Anmelden**":
+    if page == "**EINLOGEN**":
         login()
-    elif page == "**Registeren**":
+    elif page == "**REGISTRIEREN**":
         register()
 
 def register():
@@ -115,7 +115,7 @@ def add_user_to_github(username, password, first_name, last_name, dob):
 
 def login():
     st.title(" ")
-    st.title("Anmelden")
+    st.title("Einlogen")
     
     username = st.text_input("**BENUTZERNAME:**", key="login_username")
     password = st.text_input("**PASSWORT:**", type="password", key="login_password")
