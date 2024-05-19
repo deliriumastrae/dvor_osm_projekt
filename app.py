@@ -13,7 +13,7 @@ from os.path import join, dirname
 from dotenv import load_dotenv
 
 st.set_page_config(page_title="EasyPressure", page_icon="🫀")
-
+controller = CookieController()
 from utility.auth_utilities import get_user_data
 
 dotenv_path=join(dirname(__file__), ".env")
@@ -31,7 +31,6 @@ def get_image_base64(image_path):
 
 controller = None
 def main():
-    controller = CookieController()
     image_path = 'docs/anmelden.jpeg' 
     encoded_image = get_image_base64(image_path)  
 
