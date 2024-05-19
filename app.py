@@ -66,16 +66,14 @@ def main():
 
 def register():
     st.title(" ")
-    st.title("Registrieren")
-    username = st.text_input("**Benutzername**", key="register_username")
-    password = st.text_input("**Passwort**", type="password", key="register_password")
-    confirm_password = st.text_input("**Passwort bestätigen**", type="password", key="register_confirm_password")
-    first_name = st.text_input("**Vorname**", key="register_first_name")
-    last_name = st.text_input("**Nachname**", key="register_last_name")
+    st.title("Registeren") 
+    username = st.text_input("**BENUTZERNAME:**", key="register_username")
+    password = st.text_input("**PASSWORT:**", type="password", key="register_password")
+    confirm_password = st.text_input("**PASSWORT BESTÄTIGEN:**", type="password", key="register_confirm_password")
+    first_name = st.text_input("**VORNAME:**", key="register_first_name")
+    last_name = st.text_input("**NACHNAME:**", key="register_last_name")
 
-    
-
-    dob = st.date_input("**Geburtsdatum (JJJJ-MM-TT)**", min_value=datetime.date(1930, 1, 1), max_value=datetime.date(2024, 12, 31), key="register_dob")
+    dob = st.date_input("**GEBURTSDATUM (JJJJ-MM-TT)**", min_value=datetime.date(1930, 1, 1), max_value=datetime.date(2024, 12, 31), key="register_dob")
 
     if not username or not password or not confirm_password or not first_name or not last_name or not dob:
         st.warning("**Bitte füllen Sie alle Felder aus und und drücken Sie Enter.**")
@@ -119,8 +117,8 @@ def login():
     st.title(" ")
     st.title("Anmelden")
     
-    username = st.text_input("**Benutzername**", key="login_username")
-    password = st.text_input("**Passwort**", type="password", key="login_password")
+    username = st.text_input("**BENUTZERNAME:**", key="login_username")
+    password = st.text_input("**PASSWORT:**", type="password", key="login_password")
     
     
     if st.button("Anmelden"):
