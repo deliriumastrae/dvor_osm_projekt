@@ -29,14 +29,10 @@ def get_image_base64(image_path):
     with open(image_path, "rb") as image_file:
         return base64.b64encode(image_file.read()).decode('utf-8')
 
+controller = None
 def main():
     global controller
-    if "controller_initialized" not in st.session_state:
-        st.session_state.controller_initialized = True
-        try:
-            controller = CookieController()
-        except Exception as e:
-            st.error(f"Error initializing cookie controller: {str(e)}")
+    controller = CookieController()
     image_path = 'docs/anmelden.jpeg' 
     encoded_image = get_image_base64(image_path)  
 
