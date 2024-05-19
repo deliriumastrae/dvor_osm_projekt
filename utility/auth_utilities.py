@@ -4,7 +4,6 @@ import jwt
 import pandas as pd
 import io
 import base64
-from streamlit_cookies_controller import CookieController
 from github import Github, GithubException
 
 
