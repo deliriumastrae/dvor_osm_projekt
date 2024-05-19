@@ -31,7 +31,6 @@ def get_image_base64(image_path):
 
 controller = None
 def main():
-    global controller
     controller = CookieController()
     image_path = 'docs/anmelden.jpeg' 
     encoded_image = get_image_base64(image_path)  
@@ -177,4 +176,3 @@ def authenticate(username, password):
 
 if __name__ == "__main__":
     main()
-
