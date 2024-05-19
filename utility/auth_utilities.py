@@ -6,7 +6,7 @@ import io
 import base64
 from streamlit_cookies_controller import CookieController
 from github import Github, GithubException
-controller = CookieController()
+
 
 JWT_KEY = os.getenv("JWT_KEY")
 GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN")
