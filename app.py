@@ -15,10 +15,6 @@ from dotenv import load_dotenv
 st.set_page_config(page_title="EasyPressure", page_icon="🫀")
 
 from utility.auth_utilities import get_user_data
-try:
-    controller = CookieController()
-except Exception as e:
-    st.error(f"Error initializing cookie controller: {str(e)}")
 
 dotenv_path=join(dirname(__file__), ".env")
 load_dotenv(dotenv_path)
@@ -34,6 +30,10 @@ def get_image_base64(image_path):
         return base64.b64encode(image_file.read()).decode('utf-8')
 
 def main():
+    try:
+        controller = CookieController()
+    except Exception as e:
+        st.error(f"Error initializing cookie controller: {str(e)}")
     image_path = 'docs/anmelden.jpeg' 
     encoded_image = get_image_base64(image_path)  
 
@@ -117,6 +117,10 @@ def add_user_to_github(username, password, first_name, last_name, dob):
         return False
 
 def login():
+    try:
+        controller = CookieController()
+    except Exception as e:
+        st.error(f"Error initializing cookie controller: {str(e)}")
     st.title(" ")
     st.title("Einlogen")
     
