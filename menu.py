@@ -3,9 +3,41 @@ from streamlit_cookies_controller import CookieController
 from PIL import Image
 controller = CookieController()
 
-def authenticated_menu():
-    image = Image.open("docs/2024-05-18 13.02.22.jpeg")  
+def sidebar_button():
+    fa_link = """
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    """
+    st.markdown(fa_link, unsafe_allow_html=True)
 
+    custom_css = """
+    <style>
+        div.st-emotion-cache-1rgf046 button, div[data-testid="collapsedControl"] button {
+            height: 80px; 
+            width: 80px;
+            font-size: 40px; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: transparent;
+            border: none;
+        }
+        div.st-emotion-cache-1rgf046 button:before,
+        div[data-testid="collapsedControl"] button:before {
+            content: "\\f015";
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            color: black;
+            font-size: 40px;
+        }
+    </style>
+    """
+    st.markdown(custom_css, unsafe_allow_html=True)
+
+def authenticated_menu():
+   
+    sidebar_button()
+
+    image = Image.open("docs/2024-05-18 13.02.22.jpeg")  
     st.sidebar.image(image, use_column_width=True)
     st.sidebar.write(" ")
     st.sidebar.page_link("pages/data_entry.py", label="**Daten eingeben 📝**", help="Geben Sie Ihre Blutdruck- und Pulswerte ein.")
@@ -30,7 +62,7 @@ def authenticated_menu():
         st.switch_page('app.py')
 
 def unauthenticated_menu():
-    st.sidebar.title("Menu")
+    st.sidebar.title("Menü")
     st.sidebar.page_link("app.py", label="Log in")
 
 def menu(authenticated):
