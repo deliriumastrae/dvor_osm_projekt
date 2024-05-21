@@ -9,7 +9,7 @@ def main():
     st.markdown("""
     <style>
     .mixed-color-text {
-        color: #20B2AA; /* Farbe #20B2AA */
+        color:  #a2272c; /* Farbe  #a2272c */
     }
     .name {
         font-size: 24px;
