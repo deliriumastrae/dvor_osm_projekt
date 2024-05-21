@@ -12,8 +12,8 @@ def sidebar_button():
     custom_css = """
     <style>
         div.st-emotion-cache-1rgf046 button, div[data-testid="collapsedControl"] button {
-            height: 80px; 
-            width: 80px;
+            height: 60px; 
+            width: 60px;
             font-size: 40px; 
             display: flex;
             align-items: center;
@@ -34,7 +34,7 @@ def sidebar_button():
     st.markdown(custom_css, unsafe_allow_html=True)
 
 def authenticated_menu():
-    sidebar_button()
+    
     image = Image.open("docs/2024-05-18 13.02.22.jpeg")  
     st.sidebar.image(image, use_column_width=True)
     st.sidebar.write(" ")
@@ -49,7 +49,7 @@ def authenticated_menu():
     st.sidebar.page_link("pages/introduction.py", label="**Über EasyPressure 📘**", help="Erfahren Sie mehr über die Funktionen dieser App.")
     st.sidebar.write(" ")
     st.sidebar.page_link("pages/about.py", label="**Über uns 🥼**", help="Informationen über das Entwicklerteam und Kontaktdetails.")
-    
+
     if st.sidebar.button('**Ausloggen 🚪**',help="Beenden Sie Ihre Sitzung sicher."):
         st.session_state.authenticated = False
         st.cache_data.clear()
@@ -58,6 +58,7 @@ def authenticated_menu():
         else:
             st.warning("The session token has already been deleted or does not exist.")
         st.switch_page('app.py')
+    sidebar_button()
 
 def unauthenticated_menu():
     

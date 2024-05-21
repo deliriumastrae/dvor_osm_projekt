@@ -34,8 +34,7 @@ def get_image_base64(image_path):
 def main():
     image_path = 'docs/anmelden.jpeg' 
     encoded_image = get_image_base64(image_path)  
-    sidebar_button()
-    
+
     st.markdown(f"""
         <style>
         [data-testid="stAppViewContainer"] {{
@@ -65,6 +64,7 @@ def main():
         login()
     elif page == "**REGISTRIEREN**":
         register()
+    sidebar_button()
 
 def register():
     st.title(" ")
