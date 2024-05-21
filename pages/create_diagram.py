@@ -115,7 +115,6 @@ st.markdown("""<b>
 <span style='font-size: 18px; color: #a2272c;'>Bitte beachten Sie: Diese Daten dienen nur zu Informationszwecken und sollten nicht für Selbst-Diagnosen oder Behandlungen verwendet werden. Es wird empfohlen, jegliche Auffälligkeiten oder Bedenken mit Ihrem Arzt zu besprechen. Ihr Gesundheitszustand sollte regelmäßig von einem Fachmann überwacht werden.</span></b>
 """, unsafe_allow_html=True)
 
-
 from reportlab.lib import colors
 from reportlab.lib.pagesizes import letter
 from reportlab.platypus import SimpleDocTemplate, Table, TableStyle, Image
