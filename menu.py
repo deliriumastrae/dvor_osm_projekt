@@ -34,9 +34,7 @@ def sidebar_button():
     st.markdown(custom_css, unsafe_allow_html=True)
 
 def authenticated_menu():
-   
     sidebar_button()
-
     image = Image.open("docs/2024-05-18 13.02.22.jpeg")  
     st.sidebar.image(image, use_column_width=True)
     st.sidebar.write(" ")
@@ -62,6 +60,7 @@ def authenticated_menu():
         st.switch_page('app.py')
 
 def unauthenticated_menu():
+    
     st.sidebar.title("Menü")
     st.sidebar.page_link("app.py", label="Log in")
 

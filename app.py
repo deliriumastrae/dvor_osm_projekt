@@ -15,6 +15,7 @@ from dotenv import load_dotenv
 st.set_page_config(page_title="EasyPressure", page_icon="🫀")
 controller = CookieController()
 from utility.auth_utilities import get_user_data
+from menu import sidebar_button 
 
 dotenv_path=join(dirname(__file__), ".env")
 load_dotenv(dotenv_path)
@@ -33,7 +34,8 @@ def get_image_base64(image_path):
 def main():
     image_path = 'docs/anmelden.jpeg' 
     encoded_image = get_image_base64(image_path)  
-
+    sidebar_button()
+    
     st.markdown(f"""
         <style>
         [data-testid="stAppViewContainer"] {{
