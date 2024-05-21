@@ -4,13 +4,12 @@ import plotly.graph_objs as go
 import os
 import jwt
 from urllib.parse import quote
-from utility.auth_utilities import decode_auth_token
 from streamlit_cookies_controller import CookieController
-from menu import menu
 from datetime import datetime, timedelta
 from PIL import Image as PILImage
-
 st.set_page_config(page_title="EasyPressure", page_icon="🫀",layout="wide")
+from utility.auth_utilities import decode_auth_token
+from menu import menu
 
 menu(authenticated=True)
 controller = CookieController()
@@ -112,11 +111,16 @@ if user_data is not None:
 else:
     st.write("Keine Benutzerdaten sind vorhanden.")
 
+st.markdown("""<b>
+<span style='font-size: 18px; color: #a2272c;'>Bitte beachten Sie: Diese Daten dienen nur zu Informationszwecken und sollten nicht für Selbst-Diagnosen oder Behandlungen verwendet werden. Es wird empfohlen, jegliche Auffälligkeiten oder Bedenken mit Ihrem Arzt zu besprechen. Ihr Gesundheitszustand sollte regelmäßig von einem Fachmann überwacht werden.</span></b>
+""", unsafe_allow_html=True)
+
+
 from reportlab.lib import colors
 from reportlab.lib.pagesizes import letter
 from reportlab.platypus import SimpleDocTemplate, Table, TableStyle, Image
 
-if st.button('**Weiter zum Speichern**', help='Speichern Sie das Diagramm als PDF zur manuellen Bildexportierung'):
+if st.button('**WEITER ZUM SPEICHERN**', help='Speichern Sie das Diagramm als PDF zur manuellen Bildexportierung'):
     try:
         save_directory = 'path_to_save'
         pdf_file_name = f"{current_date}.pdf"
@@ -194,10 +198,10 @@ try:
     encoded_subject = quote(subject)
     encoded_body = quote(body)
 
-    doctor_email = st.text_input("**Geben Sie die E-Mail-Adresse Ihres Arztes ein**")
+    doctor_email = st.text_input("**GEBEN SIE DIE E-MAIL-ADRESSE IHRES ARZTES EIN**")
 
     mailto_link = f"mailto:{doctor_email}?subject={encoded_subject}&body={encoded_body}"
-    st.markdown(f"<a href='{mailto_link}' target='_blank'>**Daten per E-Mail senden**</a>", unsafe_allow_html=True)
+    st.markdown(f"<a href='{mailto_link}' target='_blank' style='color: #a2272c; text-transform: uppercase;'>**Daten per E-Mail senden**</a>", unsafe_allow_html=True)
 
 except: 
     st.error ("Bitte tragen Sie Ihre aktuellen Blutdruck- und Pulswerte ein.")
