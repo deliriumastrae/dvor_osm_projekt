@@ -33,7 +33,6 @@ def authenticate(username, password):
         hashed_password = existing_data.loc[existing_data['username'] == username, 'password_hash'].iloc[0]
         return bcrypt.checkpw(password.encode('utf-8'), hashed_password.encode('utf-8'))
    
-        
     except GithubException as e:
         st.error(f"Fehler bei der Benutzerauthentifizierung: {e}")
         return False

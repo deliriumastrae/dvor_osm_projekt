@@ -12,9 +12,9 @@ load_dotenv(dotenv_path)
 
 def main():
     st.sidebar.title("Menü")
-    page = st.sidebar.radio("**Wählen Sie eine Option:**", ["**EINLOGEN**", "**REGISTRIEREN**"])
+    page = st.sidebar.radio("**Wählen Sie eine Option:**", ["**EINLOGGEN**", "**REGISTRIEREN**"])
 
-    if page == "**EINLOGEN**":
+    if page == "**EINLOGGEN**":
         login()
     elif page == "**REGISTRIEREN**":
         register()
