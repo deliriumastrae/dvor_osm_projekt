@@ -120,6 +120,7 @@ def login():
     except Exception as e:
         st.error(f"Error initializing cookie controller: {str(e)}")
     st.title(" ")
+    st.subheader(" ")
     st.title("Einlogen")
     
     username = st.text_input("**BENUTZERNAME:**", key="login_username")
