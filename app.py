@@ -6,6 +6,7 @@ from dotenv import load_dotenv
 
 st.set_page_config(page_title="EasyPressure", page_icon="🫀")
 from utility.log_reg import login, register
+from utility.auth_utilities import get_auth_token
 from menu import sidebar_button, controller 
 
 dotenv_path=join(dirname(__file__), ".env")
@@ -45,8 +46,7 @@ def main():
         st.session_state.authenticated = False
 
     if "token" not in st.session_state:
-        token = controller.get("auth_token")
-        controller.set(token)
+        token = get_auth_token()
         if token:
             st.session_state.token = token
 
