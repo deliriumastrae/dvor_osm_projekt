@@ -13,9 +13,8 @@ from os.path import join, dirname
 from dotenv import load_dotenv
 
 st.set_page_config(page_title="EasyPressure", page_icon="🫀")
-controller = CookieController()
 from utility.auth_utilities import get_user_data
-from menu import sidebar_button 
+from menu import sidebar_button, controller 
 
 dotenv_path=join(dirname(__file__), ".env")
 load_dotenv(dotenv_path)

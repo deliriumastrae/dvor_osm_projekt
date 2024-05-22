@@ -22,6 +22,7 @@ COLUMNS = ['username', 'syst_pressure', 'diast_pressure', 'pulse', 'comment', 'd
 JWT_KEY = os.environ.get("JWT_KEY")
 
 
+
 def get_auth_token():
     token = controller.get("auth_token")
     cookie_options ={'max_age': 86400 }
