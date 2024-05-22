@@ -64,8 +64,6 @@ def login():
             username = user_data['username'].item()
             token = generateAuthToken(username)
             cookie_options = {
-            'max_age': 86400, 
-            'expires': None,  
             'path': '/',  
             }
             if token:
