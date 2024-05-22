@@ -45,8 +45,8 @@ def main():
         st.session_state.authenticated = False
 
     if "token" not in st.session_state:
-        controller.set(token)
         token = controller.get("auth_token")
+        controller.set(token)
         if token:
             st.session_state.token = token
 
