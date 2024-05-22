@@ -5,7 +5,8 @@ from os.path import join, dirname
 from dotenv import load_dotenv
 
 st.set_page_config(page_title="EasyPressure", page_icon="🫀")
-from utility.log_reg import login, register
+from utility.log_reg import login, register, authenticate
+authenticate()
 from menu import sidebar_button, controller 
 
 dotenv_path=join(dirname(__file__), ".env")
