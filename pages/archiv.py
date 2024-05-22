@@ -28,7 +28,6 @@ username = decode_auth_token(get_auth_token())
 
 user_data = get_user_data(username, REPO_NAME, VALUE_FILE, VALUE_COLUMNS)
 
-st.title("EasyPressure")
 st.write("Benutzername:", username)
 if user_data is not None:
 
