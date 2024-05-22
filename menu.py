@@ -53,11 +53,9 @@ def authenticated_menu():
     if st.sidebar.button('**Ausloggen 🚪**',help="Beenden Sie Ihre Sitzung sicher."):
         st.session_state.authenticated = False
         st.cache_data.clear()
-        if controller.get("auth_token"):
-            controller.remove("auth_token")
-        else:
-            st.warning("The session token has already been deleted or does not exist.")
+        controller.remove("auth_token")
         st.switch_page('app.py')
+        
     sidebar_button()
 
 def unauthenticated_menu():
