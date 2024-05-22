@@ -5,7 +5,6 @@ from menu import menu
 menu(authenticated=True)
 
 def main():
-    # CSS-Stil definieren
     st.markdown("""
     <style>
     .mixed-color-text {
@@ -20,10 +19,8 @@ def main():
     </style>
     """, unsafe_allow_html=True)
 
-    # Titel der Seite
     st.title('Über uns')
 
-    # Informationen über das Entwicklerteam
     st.markdown("""
     - <span class="name mixed-color-text">**Amal Osmanov:**</span> Student der Biomedizinischen Labordiagnostik Bachelor an der ZHAW <span class="nowrap">Wädenswil</span>
         - <span class="mixed-color-text">**Interessen:**</span> Biologie, Medizin, Genetik, Molekularbiologie

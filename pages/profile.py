@@ -1,12 +1,11 @@
 import streamlit as st
-from menu import menu
-from utility.auth_utilities import get_user_data, update_user_data
-from streamlit_cookies_controller import CookieController
+from menu import menu, controller
+from utility.data_repo_utilities import get_user_data, update_user_data
 import jwt
 import os
+from utility.auth_utilities import get_auth_token
 
 st.set_page_config(page_title="EasyPressure", page_icon="🫀", layout="wide")
-controller = CookieController()
 
 st.title("EasyPressure")
 menu(authenticated=True)
@@ -15,15 +14,6 @@ JWT_KEY = os.getenv("JWT_KEY")
 REPO_NAME = 'user_data'
 LOGIN_FILE = 'user_data.csv'
 LOGIN_COLUMNS = ['username', 'password_hash', 'first_name', 'last_name', 'dob']
-
-
-def get_auth_token():
-    token = controller.get("auth_token")
-    cookie_options = {'max_age': 86400}
-    controller.set("auth_token", token, **cookie_options)
-    if not token:
-        st.error("Token nicht gefunden.")
-    return token
 
 def profile_page():
     token= get_auth_token()

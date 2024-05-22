@@ -8,12 +8,12 @@ from streamlit_cookies_controller import CookieController
 from datetime import datetime, timedelta
 from PIL import Image as PILImage
 st.set_page_config(page_title="EasyPressure", page_icon="🫀",layout="wide")
-from utility.auth_utilities import decode_auth_token
+from utility.auth_utilities import decode_auth_token,get_auth_token
 from menu import menu
 
 menu(authenticated=True)
 controller = CookieController()
-from utility.auth_utilities import get_user_data
+from utility.data_repo_utilities import get_user_data
 
 GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN")
 REPO_NAME = 'user_data'
@@ -23,12 +23,6 @@ VALUE_COLUMNS = ['username', 'syst_pressure', 'diast_pressure', 'pulse', 'commen
 JWT_KEY = os.getenv("JWT_KEY")
 LOGIN_FILE = 'user_data.csv'
 LOGIN_COLUMNS = ['username', 'password_hash', 'first_name', 'last_name', 'dob']
-
-def get_auth_token():
-    token = controller.get("auth_token")
-    cookie_options = {'max_age': 86400}
-    controller.set("auth_token", token, **cookie_options)
-    return token
 
 username = decode_auth_token(get_auth_token())
 
