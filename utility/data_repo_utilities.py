@@ -4,7 +4,6 @@ import pandas as pd
 import bcrypt
 import io
 import base64
-import os
 from github.MainClass import Github
 from github import GithubException
 import base64

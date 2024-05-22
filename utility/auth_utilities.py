@@ -1,7 +1,7 @@
 import streamlit as st
 import jwt
 from menu import controller
-from utility.important_variables import JWT_KEY
+from utility.important_variables import JWT_KEY,controller
 
 def generateAuthToken(username):
     if username:

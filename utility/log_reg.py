@@ -11,8 +11,7 @@ from github import GithubException
 from utility.data_repo_utilities import get_user_data
 from utility.data_repo_utilities import add_user_to_github
 from utility.auth_utilities import generateAuthToken
-from utility.important_variables import GITHUB_TOKEN,REPO_NAME,LOGIN_FILE, LOGIN_COLUMNS
-from menu import controller
+from utility.important_variables import GITHUB_TOKEN,REPO_NAME,LOGIN_FILE, LOGIN_COLUMNS, controller
 
 def authenticate(username, password):
     try:
@@ -64,11 +63,10 @@ def login():
             user_data = get_user_data(username, REPO_NAME, LOGIN_FILE, LOGIN_COLUMNS)
             username = user_data['username'].item()
             token = generateAuthToken(username)
-            expires = datetime.datetime.utcnow() + datetime.timedelta(days=1)
             cookie_options = {
             'max_age': 86400, 
-            'expires': expires,  
-            'path': '/'  
+            'expires': None,  
+            'path': '/',  
             }
             if token:
                 st.session_state.token = token

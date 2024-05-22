@@ -1,7 +1,7 @@
 import streamlit as st
-from streamlit_cookies_controller import CookieController
 from PIL import Image
-controller = CookieController()
+from utility.important_variables import controller
+
 
 def sidebar_button():
     fa_link = """

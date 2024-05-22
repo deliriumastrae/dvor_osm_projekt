@@ -4,7 +4,6 @@ import plotly.graph_objs as go
 import os
 import jwt
 from urllib.parse import quote
-from streamlit_cookies_controller import CookieController
 from datetime import datetime, timedelta
 from PIL import Image as PILImage
 st.set_page_config(page_title="EasyPressure", page_icon="🫀",layout="wide")
@@ -12,7 +11,6 @@ from utility.auth_utilities import decode_auth_token,get_auth_token
 from menu import menu
 
 menu(authenticated=True)
-controller = CookieController()
 from utility.data_repo_utilities import get_user_data
 from utility.important_variables import  REPO_NAME,VALUE_FILE,VALUE_FILE, VALUE_COLUMNS, LOGIN_COLUMNS, LOGIN_FILE, JWT_KEY
 
