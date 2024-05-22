@@ -1,3 +1,4 @@
+st.set_page_config(page_title="EasyPressure", page_icon="🫀",layout="wide")
 import os
 import io
 import base64
@@ -10,7 +11,6 @@ import time
 from utility.auth_utilities import decode_auth_token
 from streamlit_cookies_controller import CookieController
 
-st.set_page_config(page_title="EasyPressure", page_icon="🫀",layout="wide")
 
 controller = CookieController()
 menu(authenticated=True)
