@@ -59,20 +59,18 @@ def login():
     
     if st.button("Einloggen"):
         if authenticate(username, password):
-            st.session_state.authenticated = True
+            st.session_state['authenticated'] = True
             user_data = get_user_data(username, REPO_NAME, LOGIN_FILE, LOGIN_COLUMNS)
             username = user_data['username'].item()
             token = generateAuthToken(username)
-            cookie_options = {
-            'path': '/',  
-            }
+            cookie_options = {'path': '/' }
             if token:
-                st.session_state.token = token
+                st.session_state['token'] = token
                 controller.set("auth_token", token, **cookie_options)
             st.switch_page("pages/data_entry.py")
         else:
             st.error("Ungültiger Benutzername oder Passwort")
-            st.session_state.authenticated = False
+            st.session_state['authenticated'] = False
 
 
 def register():
