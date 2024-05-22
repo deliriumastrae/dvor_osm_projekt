@@ -38,11 +38,29 @@ def authenticate(username, password):
         st.error(f"Fehler bei der Benutzerauthentifizierung: {e}")
         return False
 
+def get_image_base64(image_path):
+    with open(image_path, "rb") as image_file:
+        return base64.b64encode(image_file.read()).decode('utf-8')
+
+
 def login():
     st.title(" ")
     st.subheader(" ")
     st.title("Einlogen")
-    
+    image_path = 'docs/anmelden.jpeg' 
+    encoded_image = get_image_base64(image_path)  
+
+    st.markdown(f"""
+        <style>
+        [data-testid="stAppViewContainer"] {{
+            background: url("data:image/jpeg;base64,{encoded_image}");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }}
+        
+        </style>
+        """, unsafe_allow_html=True)
     username = st.text_input("**BENUTZERNAME:**", key="login_username")
     password = st.text_input("**PASSWORT:**", type="password", key="login_password")
     
