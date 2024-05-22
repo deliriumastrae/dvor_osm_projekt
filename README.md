@@ -26,16 +26,13 @@
 ### Funktionen:
 - **Benutzerprofile**
   - Möglichkeit für Benutzer, persönliche Profile anzulegen und ihre gespeicherten Daten zu verwalten.
-- **Erinnerungen und Benachrichtigungen**
-  - Implementierung von Erinnerungen für die regelmäßige Eingabe von Blutdruck- und Pulswerten sowie Benachrichtigungen für kritische Werte.
 - **Export von Daten**
   - Option zum Exportieren der gespeicherten Daten für die Verwendung in anderen Anwendungen oder für den Austausch mit medizinischen Fachkräften.
 - **Anpassbare Datenvisualisierungen**
   - Erweiterte Optionen zur Anpassung und Konfiguration von Diagrammen und Grafiken.
 
 ### Meilensteine:
-- Entwicklung von Benutzerprofilen und Profilverwaltungsfunktionen 
-- Implementierung von Erinnerungen und Benachrichtigungen 
+- Entwicklung von Benutzerprofilen und Profilverwaltungsfunktionen  
 - Hinzufügen von Exportfunktionen für Daten 
 - Verbesserung der Anpassungsmöglichkeiten für Datenvisualisierungen 
 - Integration von Feedbackmechanismen für Benutzer 

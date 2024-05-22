@@ -41,12 +41,7 @@ def authenticate(username, password):
 def get_image_base64(image_path):
     with open(image_path, "rb") as image_file:
         return base64.b64encode(image_file.read()).decode('utf-8')
-
-
-def login():
-    st.title(" ")
-    st.subheader(" ")
-    st.title("Einlogen")
+def image_to_background():
     image_path = 'docs/anmelden.jpeg' 
     encoded_image = get_image_base64(image_path)  
 
@@ -61,11 +56,17 @@ def login():
         
         </style>
         """, unsafe_allow_html=True)
+    
+def login():
+    image_to_background()
+    st.title(" ")
+    st.subheader(" ")
+    st.title("Einloggen")
+    
     username = st.text_input("**BENUTZERNAME:**", key="login_username")
     password = st.text_input("**PASSWORT:**", type="password", key="login_password")
     
-    
-    if st.button("Anmelden"):
+    if st.button("Einloggen"):
         if authenticate(username, password):
             st.session_state.authenticated = True
             user_data = get_user_data(username, REPO_NAME, LOGIN_FILE, LOGIN_COLUMNS)
@@ -87,6 +88,7 @@ def login():
 
 
 def register():
+    image_to_background()
     st.title(" ")
     st.title("Registeren") 
     username = st.text_input("**BENUTZERNAME:**", key="register_username")
