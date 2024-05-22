@@ -14,15 +14,7 @@ from menu import menu
 menu(authenticated=True)
 controller = CookieController()
 from utility.data_repo_utilities import get_user_data
-
-GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN")
-REPO_NAME = 'user_data'
-VALUE_FILE = 'user_value.csv'
-VALUE_COLUMNS = ['username', 'syst_pressure', 'diast_pressure', 'pulse', 'comment', 'date_time']
-
-JWT_KEY = os.getenv("JWT_KEY")
-LOGIN_FILE = 'user_data.csv'
-LOGIN_COLUMNS = ['username', 'password_hash', 'first_name', 'last_name', 'dob']
+from utility.important_variables import  REPO_NAME,VALUE_FILE,VALUE_FILE, VALUE_COLUMNS, LOGIN_COLUMNS, LOGIN_FILE, JWT_KEY
 
 username = decode_auth_token(get_auth_token())
 

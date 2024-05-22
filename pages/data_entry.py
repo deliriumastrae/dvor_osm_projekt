@@ -1,19 +1,11 @@
 import streamlit as st
 st.set_page_config(page_title="EasyPressure", page_icon="🫀",layout="wide")
-import os
 from menu import menu
 from datetime import datetime
 import time
 from utility.auth_utilities import decode_auth_token,get_auth_token
 from utility.data_repo_utilities import add_data_to_github
 menu(authenticated=True)
-
-GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN")
-REPO_NAME = 'user_data'
-VALUE_FILE = 'user_value.csv'
-COLUMNS = ['username', 'syst_pressure', 'diast_pressure', 'pulse', 'comment', 'date_time']
-JWT_KEY = os.environ.get("JWT_KEY")
-
 
 username= decode_auth_token(get_auth_token())
 st.markdown(f"**Willkommen bei EasyPressure, {username}!** Bitte tragen Sie Ihre aktuellen Blutdruck- und Pulswerte ein.")

@@ -1,10 +1,7 @@
 import streamlit as st
-import os
 import jwt
 from menu import controller
-
-JWT_KEY = os.getenv("JWT_KEY")
-GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN")
+from utility.important_variables import JWT_KEY
 
 def generateAuthToken(username):
     if username:

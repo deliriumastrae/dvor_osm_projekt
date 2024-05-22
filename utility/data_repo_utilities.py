@@ -10,15 +10,7 @@ from github import GithubException
 import base64
 from github import Github
 import pandas as pd
-
-GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN")
-REPO_NAME = 'user_data'
-LOGIN_FILE = 'user_data.csv'
-LOGIN_COLUMNS = ['username', 'password_hash', 'first_name', 'last_name', 'dob']
-JWT_KEY=os.environ.get("JWT_KEY")
-
-VALUE_FILE = 'user_value.csv'
-COLUMNS = ['username', 'syst_pressure', 'diast_pressure', 'pulse', 'comment', 'date_time']
+from utility.important_variables import GITHUB_TOKEN, REPO_NAME,VALUE_FILE,VALUE_COLUMNS, LOGIN_COLUMNS, LOGIN_FILE
 
 def get_user_data(username, repo_name, file_name, columns):
     try:
@@ -87,10 +79,10 @@ def add_data_to_github(username, syst_pressure, diast_pressure, pulse, comment, 
         
         try:
             contents = repo.get_contents(VALUE_FILE)
-            existing_data = pd.read_csv(io.StringIO(base64.b64decode(contents.content).decode('utf-8')), names=COLUMNS)
+            existing_data = pd.read_csv(io.StringIO(base64.b64decode(contents.content).decode('utf-8')), names=VALUE_COLUMNS)
         except Exception as e:
             st.warning(f"Fehler beim Laden der Datei: {e}")
-            existing_data = pd.DataFrame(columns=COLUMNS)
+            existing_data = pd.DataFrame(columns=VALUE_COLUMNS)
         
         new_data = pd.DataFrame({'username': [username], 'syst_pressure': [syst_pressure],
                                  'diast_pressure': [diast_pressure], 'pulse': [pulse], 'comment': [comment], 'date_time': [date_time]})

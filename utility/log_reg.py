@@ -4,7 +4,6 @@ import pandas as pd
 import bcrypt
 import io
 import base64
-import os
 import datetime
 from github.MainClass import Github
 from github import GithubException
@@ -12,14 +11,8 @@ from github import GithubException
 from utility.data_repo_utilities import get_user_data
 from utility.data_repo_utilities import add_user_to_github
 from utility.auth_utilities import generateAuthToken
+from utility.important_variables import GITHUB_TOKEN,REPO_NAME,LOGIN_FILE, LOGIN_COLUMNS
 from menu import controller
-
-GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN")
-REPO_NAME = 'user_data'
-LOGIN_FILE = 'user_data.csv'
-LOGIN_COLUMNS = ['username', 'password_hash', 'first_name', 'last_name', 'dob']
-JWT_KEY=os.environ.get("JWT_KEY")
-
 
 def authenticate(username, password):
     try:

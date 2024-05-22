@@ -1,19 +1,13 @@
 import streamlit as st
-from menu import menu, controller
+from menu import menu
 from utility.data_repo_utilities import get_user_data, update_user_data
 import jwt
-import os
 from utility.auth_utilities import get_auth_token
-
+from utility.important_variables import  REPO_NAME, LOGIN_COLUMNS, LOGIN_FILE, JWT_KEY
 st.set_page_config(page_title="EasyPressure", page_icon="🫀", layout="wide")
 
 st.title("EasyPressure")
 menu(authenticated=True)
-
-JWT_KEY = os.getenv("JWT_KEY")
-REPO_NAME = 'user_data'
-LOGIN_FILE = 'user_data.csv'
-LOGIN_COLUMNS = ['username', 'password_hash', 'first_name', 'last_name', 'dob']
 
 def profile_page():
     token= get_auth_token()
