@@ -63,7 +63,7 @@ def login():
             user_data = get_user_data(username, REPO_NAME, LOGIN_FILE, LOGIN_COLUMNS)
             username = user_data['username'].item()
             token = generateAuthToken(username)
-            cookie_options = {'path': '/' }
+            cookie_options = { }
             if token:
                 st.session_state['token'] = token
                 controller.set("auth_token", token, **cookie_options)
