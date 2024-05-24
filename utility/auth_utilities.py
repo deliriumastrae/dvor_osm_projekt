@@ -29,6 +29,4 @@ def decode_auth_token(token):
 
 def get_auth_token():
     token = controller.get("auth_token")
-    cookie_options ={'max_age': 86400 }
-    controller.set("auth_token", token, **cookie_options)
     return token

@@ -63,7 +63,7 @@ def login():
             user_data = get_user_data(username, REPO_NAME, LOGIN_FILE, LOGIN_COLUMNS)
             username = user_data['username'].item()
             token = generateAuthToken(username)
-            cookie_options = { }
+            cookie_options ={'max_age': 86400 }
             if token:
                 st.session_state['token'] = token
                 controller.set("auth_token", token, **cookie_options)
