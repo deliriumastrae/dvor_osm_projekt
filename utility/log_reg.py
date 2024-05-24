@@ -65,7 +65,7 @@ def login():
             token = generateAuthToken(username)
             cookie_options ={'max_age': 86400 }
             if token:
-                st.session_state['token'] = token
+                #st.session_state['token'] = token
                 controller.set("auth_token", token, **cookie_options)
             st.switch_page("pages/data_entry.py")
         else:

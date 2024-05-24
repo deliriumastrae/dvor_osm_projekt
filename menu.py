@@ -53,7 +53,10 @@ def authenticated_menu():
     if st.sidebar.button('**Ausloggen 🚪**',help="Beenden Sie Ihre Sitzung sicher."):
         st.session_state['authenticated'] = False
         st.cache_data.clear()
-        controller.remove("auth_token")
+        try: 
+            controller.remove("auth_token")
+        except:
+            st.error('No token to remove')
         unauthenticated_menu()
         
     sidebar_button()
