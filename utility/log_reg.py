@@ -62,7 +62,11 @@ def login():
             user_data = get_user_data(username, REPO_NAME, LOGIN_FILE, LOGIN_COLUMNS)
             username = user_data['username'].item()
             token = generateAuthToken(username)
-            cookie_options ={'max_age': 86400 }
+            cookie_options = {
+            'max_age': 86400,
+            'secure': False,  # Set to True if using HTTPS even locally
+            'domain': 'localhost'  # Adjust as necessary for your local domain
+            }
             if token:
                 controller.set("auth_token", token, **cookie_options)
             st.switch_page("pages/data_entry.py")
