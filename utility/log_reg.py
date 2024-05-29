@@ -65,7 +65,6 @@ def login():
             cookie_options = {
             'max_age': 86400,
             'secure': False,
-            'samesite': 'Strict',  
             'domain': 'localhost'  
             }
             if token:
