@@ -64,8 +64,9 @@ def login():
             token = generateAuthToken(username)
             cookie_options = {
             'max_age': 86400,
-            'secure': False,  # Set to True if using HTTPS even locally
-            'domain': 'localhost'  # Adjust as necessary for your local domain
+            'secure': False,
+            'samesite': 'Strict',  
+            'domain': 'localhost'  
             }
             if token:
                 controller.set("auth_token", token, **cookie_options)
