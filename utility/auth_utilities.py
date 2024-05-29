@@ -2,6 +2,7 @@ import streamlit as st
 import jwt
 from menu import controller
 from utility.important_variables import JWT_KEY,controller
+import streamlit.components.v1 as components
 
 def generateAuthToken(username):
     if username:
@@ -28,5 +29,12 @@ def decode_auth_token(token):
             st.error("Ungültiges Token. Bitte melden Sie sich erneut an.")
 
 def get_auth_token():
-    token = controller.get("auth_token")
-    return token
+    html_content = """
+    <script>
+    const token = localStorage.getItem('auth_token');
+    if (token) {
+        window.parent.postMessage({type: 'streamlit:setComponentValue', value: token}, '*');
+    }
+    </script>
+    """
+    return components.html(html_content, height=0, width=0)
