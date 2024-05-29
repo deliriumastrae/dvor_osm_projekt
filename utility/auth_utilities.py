@@ -37,4 +37,5 @@ def get_auth_token():
     }
     </script>
     """
-    return components.html(html_content, height=0, width=0)
+    token=components.html(html_content, height=0, width=0)
+    return token
