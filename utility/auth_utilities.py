@@ -34,8 +34,9 @@ def get_auth_token():
     const token = localStorage.getItem('auth_token');
     if (token) {
         window.parent.postMessage({type: 'streamlit:setComponentValue', value: token}, '*');
+    } else {
+        window.parent.postMessage({type: 'streamlit:setComponentValue', value: 'No token found'}, '*');
     }
     </script>
     """
-    token=components.html(html_content, height=0, width=0)
-    return token
+    components.html(html_content, height=0, width=0)

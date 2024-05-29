@@ -53,6 +53,7 @@ def save_token(token):
     html_content = f"""
     <script>
     localStorage.setItem('auth_token', '{token}');
+    // You might want to signal Streamlit to rerun after setting the token
     </script>
     """
     components.html(html_content, height=0, width=0)
@@ -72,7 +73,7 @@ def login():
             username = user_data['username'].item()
             token = generateAuthToken(username)
             if token:
-                save_token(token)  # Save the token locally using the component
+                save_token(token) 
             st.switch_page("pages/data_entry.py")
         else:
             st.error("Ungültiger Benutzername oder Passwort")
