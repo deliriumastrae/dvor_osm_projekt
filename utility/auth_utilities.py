@@ -28,15 +28,7 @@ def decode_auth_token(token):
     except jwt.InvalidTokenError:
             st.error("Ungültiges Token. Bitte melden Sie sich erneut an.")
 
-def get_auth_token():
-    html_content = """
-    <script>
-    const token = localStorage.getItem('auth_token');
-    if (token) {
-        window.parent.postMessage({type: 'streamlit:setComponentValue', value: token}, '*');
-    } else {
-        window.parent.postMessage({type: 'streamlit:setComponentValue', value: 'No token found'}, '*');
-    }
-    </script>
-    """
-    components.html(html_content, height=0, width=0)
+def get_auth_token(): 
+    token = st.session_state.get('auth_token', 'No token found')
+    st.session_state['auth_token'] = token
+    return token

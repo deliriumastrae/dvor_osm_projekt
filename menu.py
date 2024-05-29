@@ -51,7 +51,7 @@ def authenticated_menu():
     st.sidebar.page_link("pages/about.py", label="**Über uns 🥼**", help="Informationen über das Entwicklerteam und Kontaktdetails.")
 
     if st.sidebar.button('**Ausloggen 🚪**',help="Beenden Sie Ihre Sitzung sicher."):
-        
+        st.session_state['authenticated'] = False
         st.cache_data.clear()
         try: 
             controller.remove("auth_token")
@@ -62,9 +62,7 @@ def authenticated_menu():
     sidebar_button()
 
 def unauthenticated_menu():
-    sidebar_button()
     st.switch_page('app.py')
-    
 
 def menu(authenticated):
     if authenticated== True:

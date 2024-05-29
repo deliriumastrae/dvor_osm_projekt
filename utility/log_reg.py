@@ -7,6 +7,7 @@ import base64
 import datetime
 from github.MainClass import Github
 from github import GithubException
+import time
 
 from utility.data_repo_utilities import get_user_data
 from utility.data_repo_utilities import add_user_to_github
@@ -50,14 +51,9 @@ def image_to_background():
         """, unsafe_allow_html=True)
     
 def save_token(token):
-    html_content = f"""
-    <script>
-    localStorage.setItem('auth_token', '{token}');
-    // You might want to signal Streamlit to rerun after setting the token
-    </script>
-    """
-    components.html(html_content, height=0, width=0)
+    st.session_state['auth_token'] = token
 
+    
 def login():
     image_to_background()
     st.title(" ")
@@ -101,7 +97,8 @@ def register():
     
     if st.button("Registrieren"):
         if add_user_to_github(username, password, first_name, last_name, dob):
-            st.success("Registrierung erfolgreich! Bitte einloggen.")
+            
+            st.success("Registrierung erfolgreich! Bitte einloggen.")       
         else:
             st.error("Fehler beim Registrieren.")
             

@@ -1,6 +1,9 @@
 [client]
 showSidebarNavigation = false
 
+[runner]
+enforceSerializableSessionState = true
+
 [theme]
 primaryColor="#a2272c"
 backgroundColor="#dbeefb"
