@@ -19,7 +19,7 @@ def authenticate(username, password):
         repo = g.get_user().get_repo(REPO_NAME)
         contents = repo.get_contents(LOGIN_FILE)
         existing_data = pd.read_csv(io.StringIO(base64.b64decode(contents.content).decode('utf-8')), names=LOGIN_COLUMNS)
-        st.session_state.username = username
+        st.session_state['username'] = username
         if username not in existing_data['username'].values:
             return False
         hashed_password = existing_data.loc[existing_data['username'] == username, 'password_hash'].iloc[0]
