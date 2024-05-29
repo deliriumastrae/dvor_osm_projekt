@@ -19,7 +19,6 @@ def authenticate(username, password):
         repo = g.get_user().get_repo(REPO_NAME)
         contents = repo.get_contents(LOGIN_FILE)
         existing_data = pd.read_csv(io.StringIO(base64.b64decode(contents.content).decode('utf-8')), names=LOGIN_COLUMNS)
-        st.session_state['username'] = username
         if username not in existing_data['username'].values:
             return False
         hashed_password = existing_data.loc[existing_data['username'] == username, 'password_hash'].iloc[0]
@@ -32,6 +31,7 @@ def authenticate(username, password):
 def get_image_base64(image_path):
     with open(image_path, "rb") as image_file:
         return base64.b64encode(image_file.read()).decode('utf-8')
+    
 def image_to_background():
     image_path = 'docs/anmelden.jpeg' 
     encoded_image = get_image_base64(image_path)  
@@ -59,18 +59,15 @@ def login():
     
     if st.button("Einloggen"):
         if authenticate(username, password):
-            st.session_state['authenticated'] = True
             user_data = get_user_data(username, REPO_NAME, LOGIN_FILE, LOGIN_COLUMNS)
             username = user_data['username'].item()
             token = generateAuthToken(username)
             cookie_options ={'max_age': 86400 }
             if token:
-                st.session_state['token'] = token
                 controller.set("auth_token", token, **cookie_options)
             st.switch_page("pages/data_entry.py")
         else:
             st.error("Ungültiger Benutzername oder Passwort")
-            st.session_state['authenticated'] = False
 
 
 def register():

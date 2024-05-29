@@ -13,17 +13,14 @@ load_dotenv(dotenv_path)
 
 def main():
     st.sidebar.title("Menü")
+    
     page = st.sidebar.radio("**Wählen Sie eine Option:**", ["**EINLOGGEN**", "**REGISTRIEREN**"])
-
-    if "authenticated" not in st.session_state:
-        st.session_state['authenticated'] = False
-
     if page == "**EINLOGGEN**":
         login()
+
     elif page == "**REGISTRIEREN**":
         register()
 
-    
     sidebar_button()
 
 if __name__ == "__main__":
