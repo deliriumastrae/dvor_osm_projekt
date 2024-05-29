@@ -4,16 +4,16 @@ st.set_page_config(page_title="EasyPressure", page_icon="🫀")
 from os.path import join, dirname
 from dotenv import load_dotenv
 
-from utility.log_reg import login, register
+
 from menu import sidebar_button
-from utility.log_reg import image_to_background
+
 from utility.data_repo_utilities import get_user_data
 from utility.auth_utilities import generateAuthToken
 
 dotenv_path=join(dirname(__file__), ".env")
 load_dotenv(dotenv_path)
 
-import streamlit as st
+
 
 import pandas as pd
 import bcrypt
