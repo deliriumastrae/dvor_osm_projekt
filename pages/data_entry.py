@@ -6,7 +6,7 @@ import time
 from utility.auth_utilities import decode_auth_token,get_auth_token
 from utility.data_repo_utilities import add_data_to_github
 menu(authenticated=True)
-st.write(get_auth_token())
+
 username= decode_auth_token(get_auth_token())
 st.markdown(f"**Willkommen bei EasyPressure, {username}!** Bitte tragen Sie Ihre aktuellen Blutdruck- und Pulswerte ein.")
 
