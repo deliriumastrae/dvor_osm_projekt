@@ -62,7 +62,9 @@ def authenticated_menu():
     sidebar_button()
 
 def unauthenticated_menu():
+    sidebar_button()
     st.switch_page('app.py')
+    
 
 def menu(authenticated):
     if authenticated== True:
