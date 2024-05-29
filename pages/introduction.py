@@ -4,10 +4,7 @@ st.set_page_config(page_title="EasyPressure", page_icon="🫀",layout="wide")
 menu(authenticated=True)
 
 def main():
-    # Titel der Einführung
     st.title('Willkommen zur Einführung')
-
-    # Einführungstext
     st.write("""
     Diese Anwendung ermöglicht es Benutzern, ihre Blutdruckwerte und Pulswerte einzugeben und zu verfolgen.
     Sie können die Werte eingeben und die Trends über die Zeit anzeigen lassen.
@@ -22,9 +19,5 @@ Funktionen der Anwendung:
              
 **Benutzerfreundliche Oberfläche:** Die Anwendung bietet eine benutzerfreundliche Oberfläche, die es Benutzern leicht macht, ihre Daten einzugeben, zu verfolgen und zu analysieren. Streamlit ermöglicht es, interaktive Elemente wie Slider, Dropdown-Menüs und Schaltflächen einzubinden, um die Benutzererfahrung zu verbessern.
     """)
-
-    # Bild oder Diagramm zur Veranschaulichung (optional)
-    # st.image('example_image.png', caption='Beispielbild')
-
 if __name__ == '__main__':
     main()

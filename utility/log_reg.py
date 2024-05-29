@@ -7,13 +7,11 @@ import base64
 import datetime
 from github.MainClass import Github
 from github import GithubException
-import time
 
 from utility.data_repo_utilities import get_user_data
 from utility.data_repo_utilities import add_user_to_github
 from utility.auth_utilities import generateAuthToken
-from utility.important_variables import GITHUB_TOKEN,REPO_NAME,LOGIN_FILE, LOGIN_COLUMNS, controller
-import streamlit.components.v1 as components
+from utility.important_variables import GITHUB_TOKEN,REPO_NAME,LOGIN_FILE, LOGIN_COLUMNS
 
 def authenticate(username, password):
     try:
@@ -49,11 +47,7 @@ def image_to_background():
         
         </style>
         """, unsafe_allow_html=True)
-    
-def save_token(token):
-    st.session_state['auth_token'] = token
 
-    
 def login():
     image_to_background()
     st.title(" ")
@@ -69,7 +63,7 @@ def login():
             username = user_data['username'].item()
             token = generateAuthToken(username)
             if token:
-                save_token(token) 
+                st.session_state['auth_token'] = token
             st.switch_page("pages/data_entry.py")
         else:
             st.error("Ungültiger Benutzername oder Passwort")

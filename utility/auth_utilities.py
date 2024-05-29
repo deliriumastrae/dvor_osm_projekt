@@ -1,8 +1,6 @@
 import streamlit as st
 import jwt
-from menu import controller
-from utility.important_variables import JWT_KEY,controller
-import streamlit.components.v1 as components
+from utility.important_variables import JWT_KEY
 
 def generateAuthToken(username):
     if username:
@@ -29,6 +27,5 @@ def decode_auth_token(token):
             st.error("Ungültiges Token. Bitte melden Sie sich erneut an.")
 
 def get_auth_token(): 
-    token = st.session_state.get('auth_token', 'No token found')
-    st.session_state['auth_token'] = token
+    token = st.session_state.get('auth_token', 'No token found') 
     return token
