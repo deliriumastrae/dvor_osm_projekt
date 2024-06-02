@@ -1,6 +1,6 @@
 # Produkt Roadmap für Blutdruck- und Pulswerte-Anwendung
 
-# EasyPressure
+# EasyPressure ##erfasst Blutdruck und Puls, analysiert Trends und ermöglicht das Senden der Daten an Ärzte.
 
 ## Version Demo (23.05.24) - Grundlegende Funktionalität
 

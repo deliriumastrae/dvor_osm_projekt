@@ -7,7 +7,7 @@ def main():
     st.title("Willkommen zur Einführung in EasyPressure ")
 
     st.write("""
-    Diese Anwendung wurde speziell entwickelt, um Benutzern das Eingeben, Verwalten und Überwachen ihrer Blutdruck- und Pulswerte zu erleichtern. Mit EasyPressure können Sie nicht nur Ihre Gesundheitsdaten effektiv verfolgen, sondern diese auch direkt an Ihren Arzt weiterleiten, was eine nahtlose Kommunikation und bessere medizinische Betreuung ermöglicht.
+    Diese Application wurde speziell entwickelt, um Benutzern das Eingeben, Verwalten und Überwachen ihrer Blutdruck- und Pulswerte zu erleichtern. Mit EasyPressure können Sie nicht nur Ihre Gesundheitsdaten effektiv verfolgen, sondern diese auch direkt an Ihren Arzt weiterleiten, was eine nahtlose Kommunikation und bessere medizinische Betreuung ermöglicht.
     """)
 
     st.header("Funktionen der Anwendung:")
