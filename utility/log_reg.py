@@ -33,7 +33,7 @@ def get_image_base64(image_path):
         return base64.b64encode(image_file.read()).decode('utf-8')
     
 def image_to_background():
-    image_path = 'docs/anmelden.jpeg' 
+    image_path = 'docs/images/anmelden.jpeg' 
     encoded_image = get_image_base64(image_path)  
 
     st.markdown(f"""

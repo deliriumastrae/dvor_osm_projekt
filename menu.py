@@ -35,7 +35,7 @@ def sidebar_button():
 
 def authenticated_menu():
     
-    image = Image.open("docs/2024-05-18 13.02.22.jpeg")  
+    image = Image.open("docs/images/2024-05-18 13.02.22.jpeg")  
     st.sidebar.image(image, use_column_width=True)
     st.sidebar.write(" ")
     st.sidebar.page_link("pages/data_entry.py", label="**Daten eingeben 📝**", help="Geben Sie Ihre Blutdruck- und Pulswerte ein.")
