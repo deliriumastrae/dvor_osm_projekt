@@ -33,7 +33,7 @@ def profile_page():
                 }
                 update_user_data(username, REPO_NAME, LOGIN_FILE, LOGIN_COLUMNS, new_data)
                 st.success("Profil erfolgreich aktualisiert.")
-                time.sleep(2)
+                time.sleep(5)
                 st.experimental_rerun()
         else:
             st.error("Benutzerdaten nicht gefunden.")
