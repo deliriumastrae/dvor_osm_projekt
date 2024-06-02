@@ -152,6 +152,7 @@ if st.button('**WEITER ZUM SPEICHERN**', help='Speichern Sie das Diagramm als PD
     except Exception as e:
         st.error(f"Ein Fehler ist aufgetreten: {str(e)}")
 
+st.write(' ')
 token = get_auth_token()
         
 try:
