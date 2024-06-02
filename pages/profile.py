@@ -37,6 +37,7 @@ def profile_page():
         st.error("Der Token ist abgelaufen. Bitte melden Sie sich erneut an.")
     except jwt.InvalidTokenError:
         st.error("Ungültiges Token. Bitte melden Sie sich erneut an.")
+        st.switch_page('app.py')
 
 if __name__ == '__main__':
     profile_page()

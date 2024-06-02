@@ -42,11 +42,31 @@ def update_user_data(username, repo_name, file_name, columns, new_data):
         
         updated_content = existing_data.to_csv(index=False, header=False)
         repo.update_file(contents.path, "Update user data", updated_content, contents.sha)
-        st.success("Benutzerdaten wurden erfolgreich aktualisiert.")
     except GithubException as e:
         st.error(f"Fehler beim Aktualisieren der Benutzerdaten: {e}")
         return None
+    
+def update_value_data(username, repo_name, file_name, columns, new_data):
+    try:
+        g = Github(GITHUB_TOKEN)
+        repo = g.get_user().get_repo(repo_name)
+        contents = repo.get_contents(file_name)
 
+        existing_data = pd.read_csv(io.StringIO(base64.b64decode(contents.content).decode('utf-8')), names=columns)
+        date_time_str = new_data['date_time'].strftime('%Y-%m-%d %H:%M:%S')
+        user_index = existing_data[(existing_data['username'] == new_data['username']) & 
+                                   (existing_data['date_time'] == date_time_str)].index
+        if not user_index.empty:
+            for key, value in new_data.items():
+                if key in columns:
+                    existing_data.at[user_index[0], key] = value
+
+        updated_content = existing_data.to_csv(index=False, header=False)
+        repo.update_file(contents.path, "Update user data", updated_content, contents.sha)
+    except GithubException as e:
+        st.error(f"Fehler beim Aktualisieren der Benutzerdaten: {e}")
+        return None
+    
 def add_user_to_github(username, password, first_name, last_name, dob):
     try:
         g = Github(GITHUB_TOKEN)

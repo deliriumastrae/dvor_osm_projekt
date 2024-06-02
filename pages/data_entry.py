@@ -11,22 +11,22 @@ username= decode_auth_token(get_auth_token())
 st.markdown(f"**Willkommen bei EasyPressure, {username}!** Bitte tragen Sie Ihre aktuellen Blutdruck- und Pulswerte ein.")
 
 st.markdown("<h2 style='color: black; font-weight: bold; font-size: 18px; margin-bottom: -80px;'>Bitte wählen Sie den Eingabetyp:</h2>", unsafe_allow_html=True)
-option = st.radio("", ("Schieberegler", "Zahleneingabe"))
+option = st.radio("", ("**Schieberegler**", "**Zahleneingabe**"))
 
 st.markdown("<div style='text-align: center;'><h3 style='color: black;margin-bottom: -50px;'>Systolischer Druck</h3></div>", unsafe_allow_html=True)
-if option == "Schieberegler":
+if option == "**Schieberegler**":
     syst_pressure = st.slider(" ", min_value=0, max_value=300, value=120, format="%d", help="Geben Sie Ihren Systolischen Druck ein.")
 else:
     syst_pressure = st.number_input(" ", value=120, format="%d", key="syst_pressure", help="Geben Sie Ihren Systolischen Druck ein.")
 
 st.markdown("<div style='text-align: center;'><h3 style='color: black;margin-bottom: -50px;'>Diastolischer Druck</h3></div>", unsafe_allow_html=True)
-if option == "Schieberegler":
+if option == "**Schieberegler**":
     diast_pressure = st.slider(" ", min_value=0, max_value=200, value=80, format="%d", help="Geben Sie Ihren Diastolischen Druck ein.")
 else:
     diast_pressure = st.number_input(" ", value=80, format="%d", key="diast_pressure", help="Geben Sie Ihren Diastolischen Druck ein.")
 
 st.markdown("<div style='text-align: center;'><h3 style='color: black;margin-bottom: -50px;'>Puls</h3></div>", unsafe_allow_html=True)
-if option == "Schieberegler":
+if option == "**Schieberegler**":
     pulse = st.slider(" ", min_value=0, max_value=200, value=60, help="Geben Sie Ihren Puls ein.")
 else:
     pulse = st.number_input(" ", value=60, key="pulse", help="Geben Sie Ihr Puls ein.")

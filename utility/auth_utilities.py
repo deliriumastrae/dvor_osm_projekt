@@ -25,6 +25,7 @@ def decode_auth_token(token):
             st.error("Der Token ist abgelaufen. Bitte melden Sie sich erneut an.")
     except jwt.InvalidTokenError:
             st.error("Ungültiges Token. Bitte melden Sie sich erneut an.")
+            st.switch_page('app.py')
 
 def get_auth_token(): 
     token = st.session_state.get('auth_token', 'No token found') 
