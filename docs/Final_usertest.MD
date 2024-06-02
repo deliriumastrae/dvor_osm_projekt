@@ -5,8 +5,8 @@
 
 ## Inhaltsverzeichnis
 1. [Registrierung und Anmeldung](#registrierung-und-anmeldung)
-2. [Eingabe von Gesundheitsdaten](#eingabe-von-gesundheitsdaten)
-3. [Datenanalyse](#datenanalyse)
+2. [Daten eingeben](#eingabe-von-gesundheitsdaten)
+3. [Trends, Analysen & Berichte](#datenanalyse)
 4. [Archiv](#archiv)
 5. [Profil](#profil)
 6. [Über EasyPressure](#über-easypressure)
@@ -21,14 +21,14 @@
 
 ---
 
-## Eingabe von Gesundheitsdaten
+## Daten eingeben
 **Beschreibung der Seite:** Die Seite bietet die Möglichkeit, Daten zu Blutdruck und Puls über benutzerfreundliche Interface-Elemente wie Schieberegler und Textfelder einzugeben.
 
 **Benutzerreaktion:** Ich schätzte die Möglichkeit, zwischen numerischer Eingabe und der Verwendung eines Schiebereglers für die Eingabe von Blutdruck- und Pulswerten wählen zu können. Diese Funktionen bieten die notwendige Flexibilität bei der Dateneingabe. Hinweise können zusätzlich helfen, die Funktionsweise dieser Seite zu verstehen, obwohl es für mich intuitiv war. Es ist erfreulich, dass man die Möglichkeit hat, Daten nachträglich einzutragen, da es nicht immer möglich ist, dies unmittelbar nach der Messung zu tun.
 
 ---
 
-## Datenanalyse
+## Trends, Analysen & Berichte
 **Beschreibung der Seite:** Die Analyse-Seite bietet Diagramme und Graphen, die die Trends der Blutdruck- und Pulsänderungen des Benutzers zeigen, sowie die Möglichkeit, Daten im PDF-Format zu speichern und sie per E-Mail an den Arzt zu senden.
 
 **Benutzerreaktion:** Die Visualisierung der Daten durch Graphen vereinfacht die Interpretation der Veränderungen meiner Gesundheitsindikatoren erheblich. Ich konnte Trends und Veränderungen erkennen. Ich bin zufrieden mit der Möglichkeit, Daten einfach zu speichern und mit meinem Arzt zu teilen. Diese Funktionalität verstärkt das Gefühl der Kontrolle über meine Gesundheit und vereinfacht die medizinische Kommunikation. Der Interface schien intuitiv und zugänglich, was den Prozess weniger stressig macht.
