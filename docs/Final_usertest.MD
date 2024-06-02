@@ -1,7 +1,7 @@
 
 ---
 
-# EasyPressure App User Guide
+# EasyPressure 
 
 ## Inhaltsverzeichnis
 1. [Registrierung und Anmeldung](#registrierung-und-anmeldung)
