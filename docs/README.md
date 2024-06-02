@@ -83,7 +83,7 @@ Verwaltet die Dateneingabe des Benutzers:
 - **Datenbeschaffungslogik**: Speichert Daten unmittelbar nach der Eingabe.
 
 #### Datei `important_variables.py`
-Enthält wichtige Variablen und Einstellungen:
+Enthält wichtige Variablen und Einstellungen: 
 - **GITHUB_TOKEN, JWT_KEY**: Tokens für Authentifizierung und Arbeit mit GitHub und JWT.
 - **REPO_NAME, VALUE_FILE, LOGIN_FILE, VALUE_COLUMNS, LOGIN_COLUMNS**: Konstanten für Repository- und Dateinamen sowie Datenstrukturen.
 
