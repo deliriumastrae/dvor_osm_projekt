@@ -10,7 +10,7 @@ st.set_page_config(page_title="EasyPressure", page_icon="🫀",layout="wide")
 menu(authenticated=True)
 
 username = decode_auth_token(get_auth_token())
-
+st.write("Benutzername:", username)
 user_data = get_user_data(username, REPO_NAME, VALUE_FILE, VALUE_COLUMNS)
 
 st.write('**Sie können Ihre Eingaben der letzten 2 Tage bearbeiten:**')
@@ -86,7 +86,6 @@ if st.button(f"**Änderungen speichern**"):
         
 
 ###
-st.write("Benutzername:", username)
 
 
 if user_data is not None:
