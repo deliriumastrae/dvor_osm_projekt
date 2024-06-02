@@ -4,7 +4,7 @@ st.set_page_config(page_title="EasyPressure", page_icon="🫀",layout="wide")
 menu(authenticated=True)
 
 def main():
-    st.title("Willkommen zur Einführung in EasyPressure")
+    st.title("Willkommen zur Einführung in EasyPressure ")
 
     st.write("""
     Diese Anwendung wurde speziell entwickelt, um Benutzern das Eingeben, Verwalten und Überwachen ihrer Blutdruck- und Pulswerte zu erleichtern. Mit EasyPressure können Sie nicht nur Ihre Gesundheitsdaten effektiv verfolgen, sondern diese auch direkt an Ihren Arzt weiterleiten, was eine nahtlose Kommunikation und bessere medizinische Betreuung ermöglicht.
