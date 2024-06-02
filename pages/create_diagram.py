@@ -180,7 +180,7 @@ try:
     doctor_email = st.text_input("**GEBEN SIE DIE E-MAIL-ADRESSE IHRES ARZTES EIN**",help="Geben Sie die gültige E-Mail-Adresse Ihres Arztes ein, an die Sie Ihre Blutdruckdaten senden möchten. Bestätigen Sie die Eingabe mit Enter.")
 
     mailto_link = f"mailto:{doctor_email}?subject={encoded_subject}&body={encoded_body}"
-    st.markdown(f"<a href='{mailto_link}' target='_blank' style='color: #a2272c; text-transform: uppercase;'>**Daten per E-Mail senden**</a>", unsafe_allow_html=True)
+    st.markdown(f"<a href='{mailto_link}' target='_blank' style='color: #a2272c; text-transform: uppercase;'>**Daten per E-Mail senden**</a>", unsafe_allow_html=True,help='Bestätigen Sie die Eingabe mit Enter!')
     st.info('Nach der Eingabe drücken Sie bitte die Enter-Taste, um die Eingabe zu bestätigen.')
 except: 
     st.error ("Bitte tragen Sie Ihre aktuellen Blutdruck- und Pulswerte ein.")
