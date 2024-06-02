@@ -2,6 +2,7 @@ import streamlit as st
 from menu import menu
 from utility.data_repo_utilities import get_user_data, update_user_data
 import jwt
+import time
 from utility.auth_utilities import get_auth_token
 from utility.important_variables import  REPO_NAME, LOGIN_COLUMNS, LOGIN_FILE, JWT_KEY
 st.set_page_config(page_title="EasyPressure", page_icon="🫀", layout="wide")
@@ -31,6 +32,7 @@ def profile_page():
                 }
                 update_user_data(username, REPO_NAME, LOGIN_FILE, LOGIN_COLUMNS, new_data)
                 st.success("Profil erfolgreich aktualisiert.")
+                time.sleep(2)
         else:
             st.error("Benutzerdaten nicht gefunden.")
     except jwt.ExpiredSignatureError:
